@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Navigo - Pesan Hotel & Penginapan</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Link CSS relative dari folder pages/ -->
+    <link rel="stylesheet" href="../assets/css/style.css">
+    <link rel="stylesheet" href="../assets/css/navbar.css">
+    <link rel="stylesheet" href="../assets/css/hero.css">
+    <link rel="stylesheet" href="../assets/css/search.css">
+    <link rel="stylesheet" href="../assets/css/feature.css">
+    <link rel="stylesheet" href="../assets/css/filter.css">
+    <link rel="stylesheet" href="../assets/css/hotel-card.css">
+</head>
+<body>
+
+    <header class="navbar-wrapper">
+        <nav class="navbar container">
+            <a href="../index.html" class="logo">
+                <i class="fa-solid fa-plane-departure"></i>
+                <h1>Navigo</h1>
+            </a>
+            
+            <button class="hamburger" aria-label="Menu">
+                <i class="fa-solid fa-bars"></i>
+            </button>
+            
+            <ul class="nav-menu">
+                <li><a href="../index.html"><i class="fa-solid fa-plane"></i> Pesawat</a></li>
+                <li><a href="hotel.html" class="active"><i class="fa-solid fa-bed"></i> Hotel</a></li>
+                <li><a href="kereta.html"><i class="fa-solid fa-train"></i> Kereta Api</a></li>
+                <li><a href="mobil.html"><i class="fa-solid fa-car"></i> Sewa Mobil</a></li>
+                <li><a href="entertainment.html"><i class="fa-solid fa-ticket"></i> Entertainment</a></li>
+            </ul>
+
+                        <div class="nav-right">
+                <div class="currency-btn dropdown">
+                    <button type="button" onclick="toggleDropdown('currency-dropdown')">IDR <i class="fa-solid fa-chevron-down"></i></button>
+                    <div class="dropdown-menu" id="currency-dropdown">
+                        <div class="dropdown-item">IDR - Indonesian Rupiah</div>
+                        <div class="dropdown-item">USD - US Dollar</div>
+                    </div>
+                </div>
+                <a href="help.html" class="nav-link">Bantuan</a>
+                <a href="history.html" class="nav-link">Cek Order</a>
+                <div class="dropdown">
+                    <button type="button" class="btn-icon" onclick="toggleDropdown('notif-dropdown')">
+                        <i class="fa-regular fa-bell"></i>
+                        <span class="badge">2</span>
+                    </button>
+                    <div class="dropdown-menu notif-menu" id="notif-dropdown">
+                        <div class="notif-header">
+                            <span>Notifikasi</span>
+                            <a href="#">Tandai sudah dibaca</a>
+                        </div>
+                        <div class="notif-list">
+                            <div class="notif-item unread">
+                                <div class="notif-icon"><i class="fa-solid fa-check"></i></div>
+                                <div class="notif-content">
+                                    <h4>Pembayaran Berhasil</h4>
+                                    <p>Pesanan tiket pesawat tujuan Bali telah lunas.</p>
+                                    <span class="notif-time">Baru saja</span>
+                                </div>
+                            </div>
+                            <div class="notif-item">
+                                <div class="notif-icon" style="background-color: #FFF3E0; color: #F59E0B;"><i class="fa-solid fa-ticket"></i></div>
+                                <div class="notif-content">
+                                    <h4>Promo Eksklusif</h4>
+                                    <p>Dapatkan diskon 20% untuk hotel di Jakarta.</p>
+                                    <span class="notif-time">2 jam yang lalu</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <a href="profile.html" style="text-decoration: none;">
+                    <div class="avatar" title="Akun Saya">JD</div>
+                </a>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <!-- HERO BANNER SECTION (OVERRIDE BACKGROUND VIA STYLE/CLASS) -->
+        <section class="hero-section container">
+            <!-- Menggunakan foto lokal -->
+            <div class="hero-banner" style="background-image: url('../assets/img/banner/hero-hotel.png');">
+                <div class="hero-content">
+                    <h2 class="hero-title">Cari penginapan idaman?</h2>
+                    <p class="hero-subtitle">Temukan berbagai pilihan hotel, villa, dan apartemen terbaik bersama Navigo.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- SEARCH BOX SECTION -->
+        <section class="search-section container">
+            <div class="search-box">
+                <form id="hotel-search-form" action="#" method="GET">
+                    <div class="search-fields">
+                        <div class="field-group location-group" style="flex: 2;">
+                            <div class="field-item">
+                                <span class="field-label">Kota, Tujuan, atau Nama Hotel</span>
+                                <input type="text" class="search-input-native" value="Bali">
+                                <div class="field-desc">Indonesia</div>
+                            </div>
+                        </div>
+
+                        <div class="vertical-divider"></div>
+
+                        <div class="field-group date-group" style="flex: 1.5;">
+                            <div class="field-item">
+                                <span class="field-label">Check-in</span>
+                                <input type="date" class="search-input-native" value="2024-05-18">
+                            </div>
+                            <div class="field-item">
+                                <span class="field-label">Check-out (1 Malam)</span>
+                                <input type="date" class="search-input-native" value="2024-05-18">
+                            </div>
+                        </div>
+
+                        <div class="vertical-divider"></div>
+
+                        <div class="field-group passenger-group" style="flex: 1;">
+                            <div class="field-item">
+                                <span class="field-label">Tamu & Kamar</span>
+                                <select class="search-input-native"><option>2 Tamu, 1 Kamar</option><option>Opsi Lainnya 1</option><option>Opsi Lainnya 2</option></select>
+                                <div class="field-desc">Pilihan Kamar</div>
+                            </div>
+                        </div>
+                        
+                        <div class="search-btn-wrapper">
+                            <button type="submit" class="btn-search">Cari Hotel</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </section>
+
+        <!-- BENEFIT SECTION -->
+        <section class="benefit-section container" id="benefit">
+            <ul class="benefit-list">
+                <li class="benefit-item">
+                    <div class="benefit-icon"><i class="fa-solid fa-tags"></i></div>
+                    <div class="benefit-text">
+                        <strong>Harga Transparan</strong>
+                        <p>Tanpa biaya tersembunyi</p>
+                    </div>
+                </li>
+                <li class="benefit-item">
+                    <div class="benefit-icon"><i class="fa-solid fa-building-circle-check"></i></div>
+                    <div class="benefit-text">
+                        <strong>Pilihan Terlengkap</strong>
+                        <p>Hotel, villa & resort</p>
+                    </div>
+                </li>
+                <li class="benefit-item">
+                    <div class="benefit-icon"><i class="fa-solid fa-comment-dots"></i></div>
+                    <div class="benefit-text">
+                        <strong>Review Terpercaya</strong>
+                        <p>Jutaan ulasan tamu asli</p>
+                    </div>
+                </li>
+            </ul>
+        </section>
+
+        <!-- QUICK MENU SECTION -->
+        <section class="quick-menu-section container" id="quick-menu">
+            <ul class="quick-menu-list">
+                <li class="qm-item">
+                    <div class="qm-icon blue"><i class="fa-solid fa-tag"></i></div>
+                    <div class="qm-text">
+                        <strong>Promo Hotel</strong>
+                        <p>Diskon hingga 50%</p>
+                    </div>
+                </li>
+                <li class="qm-item">
+                    <div class="qm-icon green"><i class="fa-solid fa-house-user"></i></div>
+                    <div class="qm-text">
+                        <strong>Villa & Apartemen</strong>
+                        <p>Privasi lebih terjaga</p>
+                    </div>
+                </li>
+                <li class="qm-item">
+                    <div class="qm-icon purple"><i class="fa-solid fa-money-bill-wave"></i></div>
+                    <div class="qm-text">
+                        <strong>Pay at Hotel</strong>
+                        <p>Bayar saat tiba</p>
+                    </div>
+                </li>
+                <li class="qm-item">
+                    <div class="qm-icon orange"><i class="fa-solid fa-calendar-check"></i></div>
+                    <div class="qm-text">
+                        <strong>Reschedule Mudah</strong>
+                        <p>Ubah jadwal fleksibel</p>
+                    </div>
+                </li>
+            </ul>
+        </section>
+
+        <!-- MAIN CONTENT SECTION -->
+        <section class="main-layout container" id="main-content">
+            
+            <!-- SIDEBAR FILTER -->
+            <aside class="sidebar-filter" id="sidebar-filter">
+                <div class="filter-header">
+                    <h3>Filter</h3>
+                    <button class="btn-reset" type="button">Reset</button>
+                </div>
+
+                <div class="filter-box">
+                    <form action="#" method="GET">
+                        <!-- Bintang -->
+                        <div class="filter-group">
+                            <div class="filter-title">
+                                <h4>Bintang Hotel</h4>
+                                <i class="fa-solid fa-chevron-up"></i>
+                            </div>
+                            <div class="filter-options">
+                                <label class="checkbox-label">
+                                    <input type="checkbox" checked>
+                                    <span class="checkmark"></span>
+                                    <span class="label-text"><i class="fa-solid fa-star" style="color: var(--warning-orange);"></i> 5 Bintang</span>
+                                    <span class="label-count">12</span>
+                                </label>
+                                <label class="checkbox-label">
+                                    <input type="checkbox" checked>
+                                    <span class="checkmark"></span>
+                                    <span class="label-text"><i class="fa-solid fa-star" style="color: var(--warning-orange);"></i> 4 Bintang</span>
+                                    <span class="label-count">45</span>
+                                </label>
+                                <label class="checkbox-label">
+                                    <input type="checkbox">
+                                    <span class="checkmark"></span>
+                                    <span class="label-text"><i class="fa-solid fa-star" style="color: var(--warning-orange);"></i> 3 Bintang</span>
+                                    <span class="label-count">87</span>
+                                </label>
+                            </div>
+                        </div>
+
+                        <!-- Fasilitas -->
+                        <div class="filter-group">
+                            <div class="filter-title">
+                                <h4>Fasilitas</h4>
+                                <i class="fa-solid fa-chevron-up"></i>
+                            </div>
+                            <div class="filter-options">
+                                <label class="checkbox-label">
+                                    <input type="checkbox">
+                                    <span class="checkmark"></span>
+                                    <span class="label-text">Kolam Renang</span>
+                                    <span class="label-count">104</span>
+                                </label>
+                                <label class="checkbox-label">
+                                    <input type="checkbox">
+                                    <span class="checkmark"></span>
+                                    <span class="label-text">WiFi Gratis</span>
+                                    <span class="label-count">140</span>
+                                </label>
+                                <label class="checkbox-label">
+                                    <input type="checkbox">
+                                    <span class="checkmark"></span>
+                                    <span class="label-text">Sarapan Termasuk</span>
+                                    <span class="label-count">89</span>
+                                </label>
+                            </div>
+                        </div>
+
+                        <!-- Harga -->
+                        <div class="filter-group">
+                            <div class="filter-title">
+                                <h4>Harga per Malam</h4>
+                                <i class="fa-solid fa-chevron-up"></i>
+                            </div>
+                            <div class="filter-options">
+                                <p class="time-range-desc">Rentang Harga</p>
+                                <p class="time-range-value">IDR 0 - IDR 5.000.000+</p>
+                                <input type="range" class="range-slider" min="0" max="5000000" value="5000000">
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </aside>
+
+            <!-- HOTEL LIST -->
+            <section class="flight-list-section" id="hotel-list">
+                <div class="hotel-list-header">
+                    <p class="hotel-count">Menampilkan 144 hotel di Bali</p>
+                    <div class="hotel-sort">
+                        <label>Urutkan:</label>
+                        <select class="sort-select">
+                            <option>Rekomendasi Utama</option>
+                            <option>Harga Terendah</option>
+                            <option>Review Tertinggi</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="hotel-cards-container">
+                    
+                    <!-- Card 1 -->
+                    <article class="hotel-card">
+                        <div class="hotel-image">
+                            <!-- Menggunakan foto dari folder lokal -->
+                            <img src="../assets/img/banner/hotel-1.jpg" alt="Ayana Resort Bali">
+                        </div>
+                        <div class="hotel-details">
+                            <div class="hotel-header">
+                                <div>
+                                    <h3 class="hotel-name">AYANA Resort Bali</h3>
+                                    <div class="hotel-stars">
+                                        <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                                    </div>
+                                    <div class="hotel-location">
+                                        <i class="fa-solid fa-location-dot"></i> Jimbaran, Bali
+                                    </div>
+                                    <div class="hotel-facilities">
+                                        <span class="facility-badge"><i class="fa-solid fa-water-ladder"></i> Kolam Renang</span>
+                                        <span class="facility-badge"><i class="fa-solid fa-wifi"></i> WiFi Gratis</span>
+                                    </div>
+                                </div>
+                                <div class="hotel-rating">
+                                    <span class="rating-badge">9.4</span>
+                                    <span class="rating-text">Luar Biasa (1,245 Review)</span>
+                                </div>
+                            </div>
+                            <div class="hotel-footer">
+                                <div>
+                                    <span class="facility-badge" style="color: var(--success-green); background: #D1FAE5; border: 1px solid #10B981;"><i class="fa-solid fa-tag"></i> Promo Spesial</span>
+                                </div>
+                                <div class="hotel-price">
+                                    <p class="price-strike">IDR 4.500.000</p>
+                                    <h4 class="price">IDR 3.850.000</h4>
+                                    <p class="price-desc">per malam / kamar</p>
+                                    <button class="btn-select-hotel" onclick="window.location.href='checkout-hotel.html?item=hotel-ayana'">Pilih Kamar</button>
+                                </div>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Card 2 -->
+                    <article class="hotel-card">
+                        <div class="hotel-image">
+                            <img src="../assets/img/banner/hotel-2.png" alt="The Kayon Jungle Resort">
+                        </div>
+                        <div class="hotel-details">
+                            <div class="hotel-header">
+                                <div>
+                                    <h3 class="hotel-name">The Kayon Jungle Resort</h3>
+                                    <div class="hotel-stars">
+                                        <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                                    </div>
+                                    <div class="hotel-location">
+                                        <i class="fa-solid fa-location-dot"></i> Ubud, Bali
+                                    </div>
+                                    <div class="hotel-facilities">
+                                        <span class="facility-badge"><i class="fa-solid fa-spa"></i> Spa & Pijat</span>
+                                        <span class="facility-badge"><i class="fa-solid fa-mug-hot"></i> Termasuk Sarapan</span>
+                                    </div>
+                                </div>
+                                <div class="hotel-rating">
+                                    <span class="rating-badge">9.7</span>
+                                    <span class="rating-text">Sempurna (856 Review)</span>
+                                </div>
+                            </div>
+                            <div class="hotel-footer">
+                                <div></div>
+                                <div class="hotel-price">
+                                    <h4 class="price" style="color: var(--primary-blue);">IDR 4.200.000</h4>
+                                    <p class="price-desc">per malam / kamar</p>
+                                    <button class="btn-select-hotel" onclick="window.location.href='checkout-hotel.html?item=hotel-kayon'">Pilih Kamar</button>
+                                </div>
+                            </div>
+                        </div>
+                    </article>
+
+                </div>
+            </section>
+        </section>
+    </main>
+
+    <!-- FOOTER SECTION -->
+    <footer class="site-footer">
+        <p>&copy; 2024 Navigo. All rights reserved. Created with pure HTML, CSS, and JS.</p>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="../assets/js/utils.js"></script>
+    <script src="../assets/js/storage.js"></script>
+    <script src="../assets/js/navbar.js"></script>
+    <script src="../assets/js/search.js"></script>
+    <script src="../assets/js/main.js"></script>
+</body>
+</html>
