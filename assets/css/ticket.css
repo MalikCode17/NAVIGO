@@ -1,0 +1,296 @@
+/* assets/css/ticket.css */
+
+.ticket-page-layout {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 60px 20px 100px;
+    background-color: var(--bg-gray);
+    min-height: calc(100vh - 80px);
+}
+
+.success-message {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.success-message i {
+    font-size: 64px;
+    color: var(--success-green);
+    margin-bottom: 16px;
+    display: inline-block;
+    animation: popIn 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+@keyframes popIn {
+    0% { transform: scale(0); }
+    100% { transform: scale(1); }
+}
+
+.success-message h2 {
+    font-size: 28px;
+    font-weight: 700;
+    color: var(--text-dark);
+    margin-bottom: 8px;
+}
+
+.success-message p {
+    color: var(--text-gray);
+    font-size: 15px;
+}
+
+/* Ticket Design */
+.ticket-wrapper {
+    width: 100%;
+    max-width: 700px;
+    background: #fff;
+    border-radius: 16px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+    display: flex;
+    flex-direction: column;
+    position: relative;
+}
+
+/* Bagian Atas Tiket */
+.ticket-top {
+    padding: 32px;
+    background-color: #fff;
+    border-bottom: 2px dashed #E0E0E0;
+    position: relative;
+    border-radius: 16px 16px 0 0;
+}
+
+/* Cutout effect for ticket edges */
+.ticket-top::after,
+.ticket-top::before {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    width: 20px;
+    height: 20px;
+    background-color: var(--bg-gray);
+    border-radius: 50%;
+    z-index: 2;
+}
+
+.ticket-top::before {
+    left: -10px;
+    box-shadow: inset -2px 0 3px rgba(0,0,0,0.02);
+}
+
+.ticket-top::after {
+    right: -10px;
+    box-shadow: inset 2px 0 3px rgba(0,0,0,0.02);
+}
+
+/* Detail Tiket */
+.ticket-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 24px;
+}
+
+.airline-brand-ticket img {
+    height: 36px;
+    object-fit: contain;
+    margin-bottom: 8px;
+}
+
+.airline-brand-ticket p {
+    font-size: 13px;
+    color: var(--text-gray);
+    font-weight: 500;
+}
+
+.booking-code {
+    text-align: right;
+}
+
+.booking-code p {
+    font-size: 12px;
+    color: var(--text-gray);
+    margin-bottom: 4px;
+    text-transform: uppercase;
+}
+
+.booking-code h3 {
+    font-size: 24px;
+    letter-spacing: 2px;
+    color: var(--primary-blue);
+    font-weight: 800;
+}
+
+.ticket-route {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #F8FBFF;
+    padding: 20px;
+    border-radius: 12px;
+    margin-bottom: 24px;
+}
+
+.ticket-city {
+    flex: 1;
+}
+
+.ticket-city h2 {
+    font-size: 32px;
+    font-weight: 800;
+    color: var(--text-dark);
+    margin-bottom: 4px;
+}
+
+.ticket-city p {
+    font-size: 13px;
+    color: var(--text-gray);
+}
+
+.ticket-plane-icon {
+    font-size: 24px;
+    color: var(--primary-blue);
+    padding: 0 20px;
+    opacity: 0.5;
+}
+
+.ticket-info-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+}
+
+.info-box-ticket h4 {
+    font-size: 12px;
+    color: var(--text-light);
+    margin-bottom: 4px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.info-box-ticket p {
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--text-dark);
+}
+
+/* Bagian Bawah Tiket (QR Code & Passenger) */
+.ticket-bottom {
+    padding: 32px;
+    background-color: #FAFAFA;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-radius: 0 0 16px 16px;
+}
+
+.passenger-details {
+    flex: 1;
+}
+
+.passenger-name-box {
+    margin-bottom: 16px;
+}
+
+.passenger-name-box h4 {
+    font-size: 12px;
+    color: var(--text-light);
+    margin-bottom: 4px;
+    text-transform: uppercase;
+}
+
+.passenger-name-box p {
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--text-dark);
+}
+
+.qr-code-box {
+    width: 120px;
+    height: 120px;
+    background-color: #fff;
+    padding: 8px;
+    border-radius: 8px;
+    border: 1px solid #E0E0E0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.qr-code-box i {
+    font-size: 80px;
+    color: var(--text-dark);
+}
+
+/* Aksi Tombol */
+.ticket-actions {
+    margin-top: 40px;
+    display: flex;
+    gap: 16px;
+}
+
+.btn-download {
+    padding: 14px 24px;
+    background-color: var(--primary-blue);
+    color: #fff;
+    border: none;
+    border-radius: 12px;
+    font-weight: 600;
+    font-size: 15px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    text-decoration: none;
+    transition: background-color 0.2s;
+    box-shadow: 0 4px 12px rgba(10, 102, 194, 0.2);
+}
+
+.btn-download:hover {
+    background-color: var(--primary-hover);
+}
+
+.btn-home {
+    padding: 14px 24px;
+    background-color: #fff;
+    color: var(--text-dark);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    font-weight: 600;
+    font-size: 15px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    text-decoration: none;
+    transition: background-color 0.2s;
+}
+
+.btn-home:hover {
+    background-color: var(--bg-gray);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .ticket-info-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .ticket-bottom {
+        flex-direction: column-reverse;
+        gap: 24px;
+        text-align: center;
+    }
+    
+    .ticket-actions {
+        flex-direction: column;
+        width: 100%;
+        max-width: 350px;
+    }
+    
+    .btn-download, .btn-home {
+        width: 100%;
+        justify-content: center;
+    }
+}
