@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checkout Kereta Api | Navigo</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <link rel="stylesheet" href="../assets/css/style.css">
+    <link rel="stylesheet" href="../assets/css/checkout.css">
+</head>
+<body>
+
+    <!-- MINIMAL NAVBAR -->
+    <header class="checkout-navbar">
+        <div class="container">
+            <a href="../index.html" class="logo" style="text-decoration: none;">
+                <i class="fa-solid fa-plane-departure" style="color: var(--primary-blue); font-size: 24px;"></i>
+                <h1 style="color: var(--primary-blue); font-size: 24px; font-weight: 800; margin-left: 8px; display: inline-block;">Navigo</h1>
+            </a>
+            
+            <div class="secure-badge">
+                <i class="fa-solid fa-lock"></i>
+                100% Secure Checkout
+            </div>
+        </div>
+    </header>
+
+    <main class="container">
+        <div class="checkout-layout">
+            
+            <!-- LEFT COLUMN: FORMS -->
+            <div class="checkout-main">
+                
+                <!-- Data Pemesan -->
+                <section class="checkout-card">
+                    <div class="card-header">
+                        <i class="fa-solid fa-address-book"></i>
+                        <h3>Data Pemesan</h3>
+                    </div>
+                    
+                    <div class="info-box">
+                        <i class="fa-solid fa-circle-info"></i>
+                        <p>Isi semua data dengan benar. E-ticket dan konfirmasi pesanan akan dikirimkan ke alamat email dan nomor HP pemesan.</p>
+                    </div>
+
+                    <form action="#">
+                        <div class="form-row">
+                            <div class="form-group" style="flex: 0.3;">
+                                <label for="contact-title">Titel</label>
+                                <select id="contact-title" name="contact-title">
+                                    <option value="mr">Tuan</option>
+                                    <option value="mrs">Nyonya</option>
+                                    <option value="ms">Nona</option>
+                                </select>
+                            </div>
+                            <div class="form-group" style="flex: 0.7;">
+                                <label for="contact-name">Nama Lengkap Pemesan</label>
+                                <input type="text" id="contact-name" placeholder="Sesuai KTP/Paspor" required>
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="contact-email">Alamat Email</label>
+                                <input type="email" id="contact-email" placeholder="contoh@email.com" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="contact-phone">No. Handphone</label>
+                                <input type="tel" id="contact-phone" placeholder="081234567890" required>
+                            </div>
+                        </div>
+                    </form>
+                </section>
+
+                <!-- Data Penumpang -->
+                <section class="checkout-card">
+                    <div class="card-header">
+                        <i class="fa-solid fa-user-group"></i>
+                        <h3>Data Penumpang 1 (Dewasa)</h3>
+                    </div>
+
+                    <label class="custom-checkbox" style="margin-bottom: 24px;">
+                        <input type="checkbox" id="same-as-contact">
+                        Sama dengan pemesan
+                    </label>
+
+                    <form action="#">
+                        <div class="form-row">
+                            <div class="form-group" style="flex: 0.3;">
+                                <label for="passenger-title">Titel</label>
+                                <select id="passenger-title">
+                                    <option value="mr">Tuan</option>
+                                    <option value="mrs">Nyonya</option>
+                                    <option value="ms">Nona</option>
+                                </select>
+                            </div>
+                            <div class="form-group" style="flex: 0.7;">
+                                <label for="passenger-name">Nama Lengkap Penumpang</label>
+                                <input type="text" id="passenger-name" placeholder="Sesuai KTP/Paspor" required>
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group" style="flex: 0.3;">
+                                <label for="seat-number">Pilih Kursi</label>
+                                <select id="seat-number">
+                                    <option value="Eks-1 / 1A">Eks-1 / 1A</option>
+                                    <option value="Eks-1 / 1B">Eks-1 / 1B</option>
+                                    <option value="Eks-1 / 2A">Eks-1 / 2A</option>
+                                    <option value="Eks-1 / 2B">Eks-1 / 2B</option>
+                                </select>
+                            </div>
+                            <div class="form-group" style="flex: 0.7;">
+                                <label for="nationality">Kewarganegaraan</label>
+                                <select id="nationality">
+                                    <option value="id">Indonesia</option>
+                                    <option value="my">Malaysia</option>
+                                    <option value="sg">Singapura</option>
+                                    <option value="other">Lainnya...</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="id-number">NIK / Nomor Paspor</label>
+                                <input type="text" id="id-number" placeholder="Nomor Identitas Anda" required>
+                            </div>
+                        </div>
+                    </form>
+                </section>
+
+                <!-- Add-ons / Asuransi -->
+                <section class="checkout-card">
+                    <div class="card-header">
+                        <i class="fa-solid fa-shield-heart"></i>
+                        <h3>Fasilitas Tambahan</h3>
+                    </div>
+
+                    <div class="addon-item">
+                        <div class="addon-icon">
+                            <i class="fa-solid fa-umbrella"></i>
+                        </div>
+                        <div class="addon-details">
+                            <h4>Asuransi Perjalanan Navigo Protect</h4>
+                            <p>Kompensasi hingga Rp 5.000.000 untuk keterlambatan, kehilangan bagasi, atau pembatalan medis.</p>
+                            <span class="addon-price">IDR 45.000 / pax</span>
+                        </div>
+                        <div>
+                            <label class="custom-checkbox">
+                                <input type="checkbox">
+                            </label>
+                        </div>
+                    </div>
+                </section>
+            </div>
+
+            <!-- RIGHT COLUMN: ORDER SUMMARY -->
+            <div class="checkout-sidebar">
+                <div class="sticky-sidebar">
+                    <section class="checkout-card">
+                        <div class="card-header">
+                            <i class="fa-solid fa-receipt"></i>
+                            <h3>Ringkasan Pesanan</h3>
+                        </div>
+
+                        <!-- Detail Kereta -->
+                        <div class="flight-summary-header">
+                            <img src="../assets/img/logo/logo-kai.jpg" alt="KAI" style="border-radius: 8px; width: 60px; height: 60px; object-fit: contain; background: white;">
+                            <div>Argo Bromo Anggrek<br><span style="color:var(--text-gray); font-weight:400;">Eksekutif (AA) • Rab, 22 Mei 2024</span></div>
+                        </div>
+
+                        <div class="flight-route">
+                            <div class="route-point">
+                                <h4>08:20</h4>
+                                <p>GMR (Gambir)</p>
+                            </div>
+                            <i class="fa-solid fa-arrow-right route-arrow"></i>
+                            <div class="route-point" style="text-align: right;">
+                                <h4>11:10</h4>
+                                <p>SMC (Semarang)</p>
+                            </div>
+                        </div>
+
+                        <!-- Rincian Harga -->
+                        <div class="summary-item">
+                            <span>Tiket Dewasa (1x)</span>
+                            <strong>IDR 250.000</strong>
+                        </div>
+                        <div class="summary-item">
+                            <span>Biaya Layanan Jasa</span>
+                            <strong>Gratis</strong>
+                        </div>
+
+                        <!-- Total -->
+                        <div class="summary-total">
+                            <p>Total Pembayaran</p>
+                            <h3>IDR 250.000</h3>
+                        </div>
+
+                        <button class="btn-checkout" onclick="handleCheckout(event)">Lanjut ke Pembayaran <i class="fa-solid fa-chevron-right"></i></button>
+                    </section>
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <!-- 7. FOOTER SECTION -->
+    <footer class="site-footer">
+        <div class="container">
+            <p>&copy; 2024 Navigo. Hak cipta dilindungi.</p>
+        </div>
+    </footer>
+
+    <!-- Script Utama -->
+    <script>
+        // Fitur Checkbox "Sama dengan pemesan"
+        document.getElementById('same-as-contact').addEventListener('change', function() {
+            if(this.checked) {
+                // Copy data if needed in real app
+                document.getElementById('passenger-name').value = document.getElementById('contact-name').value;
+                document.getElementById('passenger-title').value = document.getElementById('contact-title').value;
+            } else {
+                document.getElementById('passenger-name').value = '';
+            }
+        });
+    </script>
+    <script src="../assets/js/main.js"></script>
+    <script src="../assets/js/checkout-train.js"></script>
+</body>
+</html>
