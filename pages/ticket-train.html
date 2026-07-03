@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>E-Ticket Kereta Api | Navigo</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <link rel="stylesheet" href="../assets/css/style.css">
+    <link rel="stylesheet" href="../assets/css/navbar.css">
+    <link rel="stylesheet" href="../assets/css/ticket.css">
+</head>
+<body>
+
+    <!-- NORMAL NAVBAR -->
+    <header class="site-header">
+        <div class="container navbar">
+            <a href="../index.html" class="logo">
+                <i class="fa-solid fa-plane-departure"></i>
+                <h1>Navigo</h1>
+            </a>
+            
+            <nav class="nav-links">
+                <a href="../index.html" class="nav-link">Pesawat</a>
+                <a href="hotel.html" class="nav-link">Hotel</a>
+                <a href="kereta.html" class="nav-link">Kereta</a>
+                <a href="mobil.html" class="nav-link">Mobil</a>
+                <a href="entertainment.html" class="nav-link">Entertainment</a>
+            </nav>
+            
+                        <div class="nav-right">
+                <div class="currency-btn dropdown">
+                    <button type="button" onclick="toggleDropdown('currency-dropdown')">IDR <i class="fa-solid fa-chevron-down"></i></button>
+                    <div class="dropdown-menu" id="currency-dropdown">
+                        <div class="dropdown-item">IDR - Indonesian Rupiah</div>
+                        <div class="dropdown-item">USD - US Dollar</div>
+                    </div>
+                </div>
+                <a href="help.html" class="nav-link">Bantuan</a>
+                <a href="history.html" class="nav-link">Cek Order</a>
+                <div class="dropdown">
+                    <button type="button" class="btn-icon" onclick="toggleDropdown('notif-dropdown')">
+                        <i class="fa-regular fa-bell"></i>
+                        <span class="badge">2</span>
+                    </button>
+                    <div class="dropdown-menu notif-menu" id="notif-dropdown">
+                        <div class="notif-header">
+                            <span>Notifikasi</span>
+                            <a href="#">Tandai sudah dibaca</a>
+                        </div>
+                        <div class="notif-list">
+                            <div class="notif-item unread">
+                                <div class="notif-icon"><i class="fa-solid fa-check"></i></div>
+                                <div class="notif-content">
+                                    <h4>Pembayaran Berhasil</h4>
+                                    <p>Pesanan tiket kereta tujuan Bandung telah lunas.</p>
+                                    <span class="notif-time">Baru saja</span>
+                                </div>
+                            </div>
+                            <div class="notif-item">
+                                <div class="notif-icon" style="background-color: #FFF3E0; color: #F59E0B;"><i class="fa-solid fa-ticket"></i></div>
+                                <div class="notif-content">
+                                    <h4>Promo Eksklusif</h4>
+                                    <p>Dapatkan diskon 20% untuk hotel di Jakarta.</p>
+                                    <span class="notif-time">2 jam yang lalu</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <a href="profile.html" style="text-decoration: none;">
+                    <div class="avatar" title="Akun Saya">JD</div>
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <main class="ticket-page-layout">
+        
+        <!-- Pesan Sukses -->
+        <div class="success-message">
+            <i class="fa-solid fa-circle-check"></i>
+            <h2>Pembayaran Berhasil!</h2>
+            <p>E-Ticket telah dikirimkan ke email Anda dan dapat dilihat di halaman pesanan.</p>
+        </div>
+
+        <!-- E-Ticket Card -->
+        <div class="ticket-wrapper">
+            
+            <div class="ticket-top">
+                <!-- Brand & Booking Code -->
+                <div class="ticket-header">
+                    <div class="airline-brand-ticket">
+                        <img src="../assets/img/airline/logo-kai.jpg" style="background: white;" alt="Batik Air">
+                        <p>Argo Bromo Anggrek</p>
+                    </div>
+                    <div class="booking-code">
+                        <p>Kode Booking / PNR</p>
+                        <h3>XG82YB</h3>
+                    </div>
+                </div>
+
+                <!-- Route Big -->
+                <div class="ticket-route">
+                    <div class="ticket-city">
+                        <h2>GMR</h2>
+                        <p>Gambir, Jakarta</p>
+                    </div>
+                    <i class="fa-solid fa-train ticket-plane-icon"></i>
+                    <div class="ticket-city" style="text-align: right;">
+                        <h2>SMC</h2>
+                        <p>Semarang Tawang</p>
+                    </div>
+                </div>
+
+                <!-- Info Grid -->
+                <div class="ticket-info-grid">
+                    <div class="info-box-ticket">
+                        <h4>Tanggal Berangkat</h4>
+                        <p>22 Mei 2024</p>
+                    </div>
+                    <div class="info-box-ticket">
+                        <h4>Waktu Boarding</h4>
+                        <p>08:00 WIB</p>
+                    </div>
+                    <div class="info-box-ticket">
+                        <h4>Peron</h4>
+                        <p>Jalur 3</p>
+                    </div>
+                    <div class="info-box-ticket">
+                        <h4>Kelas</h4>
+                        <p>Eksekutif (AA)</p>
+                    </div>
+                    <div class="info-box-ticket">
+                        <h4>Nomor Kursi</h4>
+                        <p>Eks-1 / 12A</p>
+                    </div>
+                    <div class="info-box-ticket">
+                        <h4>Kereta / Gerbong</h4>
+                        <p>Eksekutif 1</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="ticket-bottom">
+                <div class="passenger-details">
+                    <div class="passenger-name-box">
+                        <h4>Nama Penumpang</h4>
+                        <p>MR JOHN DOE</p>
+                    </div>
+                    <div class="passenger-name-box" style="margin-bottom: 0;">
+                        <h4>Nomor Identitas</h4>
+                        <p>1234567890123456</p>
+                    </div>
+                </div>
+                
+                <div class="qr-code-box">
+                    <!-- Dummy QR Code Icon -->
+                    <i class="fa-solid fa-qrcode"></i>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Tombol Aksi -->
+        <div class="ticket-actions">
+            <a href="#" class="btn-download" onclick="alert('Mendownload E-Ticket PDF...')">
+                <i class="fa-solid fa-download"></i> Unduh Tiket (PDF)
+            </a>
+            <a href="../index.html" class="btn-home">
+                Kembali ke Beranda
+            </a>
+        </div>
+
+    </main>
+
+    <!-- FOOTER SECTION -->
+    <footer class="site-footer">
+        <div class="container">
+            <p>&copy; 2024 Navigo. Hak cipta dilindungi.</p>
+        </div>
+    </footer>
+
+    <script src="../assets/js/main.js"></script>
+</body>
+</html>
