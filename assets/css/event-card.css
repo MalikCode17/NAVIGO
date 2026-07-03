@@ -1,0 +1,232 @@
+/* assets/css/event-card.css */
+
+.event-list-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 24px;
+}
+
+.event-count {
+    font-size: 14px;
+    color: var(--text-gray);
+    font-weight: 500;
+}
+
+.event-sort {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 14px;
+}
+
+.event-cards-container {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+.event-card {
+    background-color: var(--white);
+    border-radius: 16px;
+    box-shadow: var(--shadow-sm);
+    display: flex;
+    overflow: hidden;
+    transition: transform 0.2s, box-shadow 0.2s;
+    min-height: 220px;
+}
+
+.event-card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-md);
+}
+
+.event-image {
+    width: 280px;
+    flex-shrink: 0;
+    position: relative;
+    display: flex;
+}
+
+.event-image img {
+    width: 100%;
+    object-fit: cover;
+}
+
+.category-badge {
+    position: absolute;
+    top: 16px;
+    left: 16px;
+    background-color: rgba(0, 0, 0, 0.7);
+    color: var(--white);
+    padding: 6px 12px;
+    border-radius: 100px;
+    font-size: 12px;
+    font-weight: 600;
+    backdrop-filter: blur(4px);
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.event-details {
+    flex: 1;
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.event-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+.event-name {
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--text-dark);
+    margin-bottom: 8px;
+}
+
+.event-location {
+    font-size: 14px;
+    color: var(--text-gray);
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    margin-bottom: 12px;
+}
+
+.event-location i {
+    color: var(--primary-blue);
+}
+
+.event-features {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.feature-tag {
+    background-color: var(--bg-gray);
+    color: var(--text-gray);
+    padding: 4px 10px;
+    border-radius: 6px;
+    font-size: 12px;
+    font-weight: 500;
+}
+
+.event-rating {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+}
+
+.rating-badge {
+    background-color: var(--warning-orange);
+    color: var(--white);
+    font-weight: 700;
+    padding: 6px 10px;
+    border-radius: 8px;
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.rating-text {
+    font-size: 12px;
+    color: var(--text-gray);
+    margin-top: 6px;
+}
+
+.event-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin-top: 16px;
+}
+
+.event-info {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.info-item {
+    font-size: 12px;
+    color: var(--text-gray);
+}
+
+.info-item.highlight {
+    color: var(--success-green);
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.event-price {
+    text-align: right;
+}
+
+.event-price .price-strike {
+    font-size: 12px;
+    color: var(--text-light);
+    text-decoration: line-through;
+}
+
+.event-price .price {
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--danger-red);
+}
+
+.btn-select-event {
+    background-color: var(--warning-orange);
+    color: var(--white);
+    font-size: 14px;
+    font-weight: 600;
+    padding: 12px 24px;
+    border-radius: 8px;
+    transition: background-color 0.2s;
+    margin-top: 8px;
+}
+
+.btn-select-event:hover {
+    background-color: #D97706;
+}
+
+/* Responsiveness */
+@media (max-width: 992px) {
+    .event-card {
+        flex-direction: column;
+    }
+    .event-image {
+        width: 100%;
+        height: 200px;
+    }
+    .event-header {
+        flex-direction: column;
+        gap: 12px;
+    }
+    .event-rating {
+        align-items: flex-start;
+        flex-direction: row;
+        align-items: center;
+        gap: 8px;
+    }
+    .event-rating .rating-text {
+        margin-top: 0;
+    }
+    .event-footer {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 16px;
+    }
+    .event-price {
+        text-align: left;
+    }
+}
