@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pusat Bantuan | Navigo</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <link rel="stylesheet" href="../assets/css/style.css">
+    <link rel="stylesheet" href="../assets/css/navbar.css">
+    <link rel="stylesheet" href="../assets/css/help.css">
+</head>
+<body>
+
+    <!-- NAVBAR WITH DROPDOWNS -->
+    <header class="navbar-wrapper">
+        <nav class="navbar container">
+            <a href="../index.html" class="logo">
+                <i class="fa-solid fa-plane-departure"></i>
+                <h1>Navigo</h1>
+            </a>
+            
+            <button class="hamburger" aria-label="Menu">
+                <i class="fa-solid fa-bars"></i>
+            </button>
+            
+            <ul class="nav-menu">
+                <li><a href="../index.html"><i class="fa-solid fa-plane"></i> Pesawat</a></li>
+                <li><a href="hotel.html"><i class="fa-solid fa-bed"></i> Hotel</a></li>
+                <li><a href="kereta.html"><i class="fa-solid fa-train"></i> Kereta Api</a></li>
+                <li><a href="mobil.html"><i class="fa-solid fa-car"></i> Sewa Mobil</a></li>
+                <li><a href="entertainment.html"><i class="fa-solid fa-ticket"></i> Entertainment</a></li>
+            </ul>
+
+            <div class="nav-right">
+                <div class="currency-btn dropdown">
+                    <button type="button" onclick="toggleDropdown('currency-dropdown')">IDR <i class="fa-solid fa-chevron-down"></i></button>
+                    <div class="dropdown-menu" id="currency-dropdown">
+                        <div class="dropdown-item">IDR - Indonesian Rupiah</div>
+                        <div class="dropdown-item">USD - US Dollar</div>
+                    </div>
+                </div>
+                <a href="help.html" class="nav-link active">Bantuan</a>
+                <a href="history.html" class="nav-link">Cek Order</a>
+                <div class="dropdown">
+                    <button type="button" class="btn-icon" onclick="toggleDropdown('notif-dropdown')">
+                        <i class="fa-regular fa-bell"></i>
+                        <span class="badge">2</span>
+                    </button>
+                    <div class="dropdown-menu notif-menu" id="notif-dropdown">
+                        <div class="notif-header">
+                            <span>Notifikasi</span>
+                            <a href="#">Tandai sudah dibaca</a>
+                        </div>
+                        <div class="notif-list">
+                            <div class="notif-item unread">
+                                <div class="notif-icon"><i class="fa-solid fa-check"></i></div>
+                                <div class="notif-content">
+                                    <h4>Pembayaran Berhasil</h4>
+                                    <p>Pesanan tiket pesawat tujuan Bali telah lunas.</p>
+                                    <span class="notif-time">Baru saja</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <a href="profile.html" style="text-decoration: none;">
+                    <div class="avatar" title="Akun Saya">JD</div>
+                </a>
+            </div>
+        </nav>
+    </header>
+
+    <!-- HELP HERO -->
+    <section class="help-hero">
+        <div class="container">
+            <h1>Hai, ada yang bisa kami bantu?</h1>
+            <p>Cari topik masalah Anda atau telusuri artikel bantuan di bawah.</p>
+            
+            <div class="help-search">
+                <i class="fa-solid fa-magnifying-glass"></i>
+                <input type="text" placeholder="Ketik kata kunci (Misal: Refund, Reschedule, Tiket...)">
+            </div>
+        </div>
+    </section>
+
+    <main class="container">
+        <div class="help-layout">
+            
+            <!-- FAQ Section -->
+            <div class="faq-section">
+                <h3>Pertanyaan yang Sering Diajukan (FAQ)</h3>
+
+                <div class="faq-item">
+                    <button class="faq-header">
+                        Bagaimana cara membatalkan pesanan (Refund)?
+                        <i class="fa-solid fa-chevron-down"></i>
+                    </button>
+                    <div class="faq-body">
+                        <p>Untuk mengajukan pengembalian dana (refund), silakan pergi ke halaman <strong>Cek Order > Riwayat Pesanan</strong>. Pilih pesanan yang ingin dibatalkan, lalu klik tombol "Ajukan Refund". Pastikan tiket Anda memenuhi syarat dan ketentuan maskapai terkait.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-header">
+                        Bagaimana cara mengubah jadwal (Reschedule)?
+                        <i class="fa-solid fa-chevron-down"></i>
+                    </button>
+                    <div class="faq-body">
+                        <p>Perubahan jadwal dapat dilakukan maksimal 24 jam sebelum keberangkatan. Kunjungi halaman <strong>Cek Order</strong>, pilih tiket Anda, lalu pilih opsi "Reschedule". Biaya tambahan mungkin berlaku tergantung pada selisih harga tiket baru.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-header">
+                        E-Ticket saya tidak muncul setelah pembayaran?
+                        <i class="fa-solid fa-chevron-down"></i>
+                    </button>
+                    <div class="faq-body">
+                        <p>Penerbitan E-Ticket biasanya membutuhkan waktu maksimal 10-15 menit setelah konfirmasi pembayaran dari Bank. Jika lebih dari batas waktu tiket belum muncul di email atau halaman riwayat, segera hubungi Customer Service kami melampirkan bukti transfer.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-header">
+                        Apakah saya bisa mengubah nama penumpang?
+                        <i class="fa-solid fa-chevron-down"></i>
+                    </button>
+                    <div class="faq-body">
+                        <p>Sesuai dengan regulasi penerbangan, pengubahan nama penumpang (Name Correction) hanya dapat dilakukan untuk kesalahan minor (maksimal 3 huruf). Anda tidak dapat mengubah nama penumpang menjadi orang yang berbeda. Silakan hubungi maskapai secara langsung.</p>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Contact Section -->
+            <div class="contact-section">
+                <div class="contact-card">
+                    <div class="contact-icon">
+                        <i class="fa-solid fa-headset"></i>
+                    </div>
+                    <h4>Butuh bantuan lebih lanjut?</h4>
+                    <p>Tim Customer Service kami selalu siap sedia membantu kendala perjalanan Anda 24/7.</p>
+                    
+                    <a href="#" class="btn-contact">
+                        <i class="fa-brands fa-whatsapp"></i> Chat WhatsApp
+                    </a>
+                    
+                    <div style="margin-top: 16px; font-size: 13px; color: var(--text-gray);">
+                        Email: support@navigo.com<br>
+                        Call: 021-8000-8000
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <!-- FOOTER SECTION -->
+    <footer class="site-footer">
+        <div class="container">
+            <p>&copy; 2024 Navigo. Hak cipta dilindungi.</p>
+        </div>
+    </footer>
+
+    
+    <script src="../assets/js/main.js"></script>
+</body>
+</html>
