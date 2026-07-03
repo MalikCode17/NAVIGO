@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Daftar | Navigo</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <link rel="stylesheet" href="../assets/css/style.css">
+    <link rel="stylesheet" href="../assets/css/auth.css">
+</head>
+<body>
+
+    <main class="auth-layout">
+        
+        <!-- BAGIAN KIRI: GAMBAR & BRANDING -->
+        <div class="auth-banner" style="background-image: url('../assets/img/banner/hero-hotel.png');">
+            <div class="auth-banner-content">
+                <a href="../index.html" class="auth-logo">
+                    <i class="fa-solid fa-plane-departure"></i>
+                    <span>Navigo</span>
+                </a>
+            </div>
+            <div class="auth-quote">
+                <h2>Bergabunglah dan raih keuntungan tanpa batas.</h2>
+                <p>Buat akun Navigo sekarang dan dapatkan poin di setiap transaksi, promo member, dan prioritas layanan.</p>
+            </div>
+        </div>
+
+        <!-- BAGIAN KANAN: FORM REGISTER -->
+        <div class="auth-form-container">
+            <a href="../index.html" class="btn-back"><i class="fa-solid fa-arrow-left"></i> Kembali ke Beranda</a>
+            
+            <div class="auth-header">
+                <h2>Buat Akun Baru</h2>
+                <p>Lengkapi formulir di bawah ini untuk bergabung dengan kami.</p>
+            </div>
+
+            <form action="login.html" method="GET">
+                
+                <div class="name-group">
+                    <div class="form-group">
+                        <label for="first-name">Nama Depan</label>
+                        <div class="input-wrapper">
+                            <i class="fa-regular fa-user"></i>
+                            <input type="text" id="first-name" name="first-name" placeholder="John" required>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="last-name">Nama Belakang</label>
+                        <div class="input-wrapper">
+                            <i class="fa-regular fa-user"></i>
+                            <input type="text" id="last-name" name="last-name" placeholder="Doe" required>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="email">Alamat Email</label>
+                    <div class="input-wrapper">
+                        <i class="fa-regular fa-envelope"></i>
+                        <input type="email" id="email" name="email" placeholder="contoh@email.com" required>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="phone">Nomor Handphone</label>
+                    <div class="input-wrapper">
+                        <i class="fa-solid fa-mobile-screen"></i>
+                        <input type="tel" id="phone" name="phone" placeholder="081234567890" required>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="password">Kata Sandi</label>
+                    <div class="input-wrapper">
+                        <i class="fa-solid fa-lock"></i>
+                        <input type="password" id="password" name="password" placeholder="Minimal 8 karakter" required>
+                        <button type="button" class="btn-toggle-password" id="toggle-password">
+                            <i class="fa-regular fa-eye-slash"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <button type="submit" class="btn-auth">Daftar Akun</button>
+            </form>
+
+            <div class="auth-divider">
+                <span>Atau daftar menggunakan</span>
+            </div>
+
+            <div class="social-login">
+                <button type="button" class="btn-social">
+                    <i class="fa-brands fa-google" style="color: #DB4437;"></i>
+                    Google
+                </button>
+                <button type="button" class="btn-social">
+                    <i class="fa-brands fa-facebook" style="color: #4267B2;"></i>
+                    Facebook
+                </button>
+            </div>
+
+            <div class="auth-footer">
+                Sudah punya akun? <a href="login.html">Masuk di sini</a>
+            </div>
+        </div>
+
+    </main>
+
+    <script src="../assets/js/main.js"></script>
+    <script>
+        // Fitur Show/Hide Password
+        document.getElementById('toggle-password').addEventListener('click', function() {
+            const passwordInput = document.getElementById('password');
+            const icon = this.querySelector('i');
+            
+            if (passwordInput.type === 'password') {
+                passwordInput.type = 'text';
+                icon.classList.remove('fa-eye-slash');
+                icon.classList.add('fa-eye');
+            } else {
+                passwordInput.type = 'password';
+                icon.classList.remove('fa-eye');
+                icon.classList.add('fa-eye-slash');
+            }
+        });
+
+        // Set login status
+        document.querySelector('form').addEventListener('submit', function(e) {
+            localStorage.setItem('navigo_logged_in', 'true');
+        });
+    </script>
+</body>
+</html>
