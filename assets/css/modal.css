@@ -1,0 +1,181 @@
+/* assets/css/modal.css */
+
+.qm-modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(4px);
+    z-index: 9999;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.qm-modal-overlay.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.qm-modal-box {
+    background: #fff;
+    width: 90%;
+    max-width: 500px;
+    border-radius: 12px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+    transform: translateY(20px);
+    transition: transform 0.3s ease;
+    overflow: hidden;
+}
+
+.qm-modal-overlay.active .qm-modal-box {
+    transform: translateY(0);
+}
+
+.qm-modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 16px 20px;
+    border-bottom: 1px solid #f0f0f0;
+    background-color: #f9fbfd;
+}
+
+.qm-modal-header h3 {
+    margin: 0;
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--text-dark);
+}
+
+.qm-close-btn {
+    background: none;
+    border: none;
+    font-size: 18px;
+    color: var(--text-light);
+    cursor: pointer;
+    transition: color 0.2s ease;
+}
+
+.qm-close-btn:hover {
+    color: var(--danger-red);
+}
+
+.qm-modal-body {
+    padding: 20px;
+    font-size: 14px;
+    color: var(--text-dark);
+}
+
+/* Modal specific content styles */
+.qm-promo-list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+.qm-promo-item {
+    display: flex;
+    align-items: center;
+    background: #eef5ff;
+    padding: 12px;
+    border-radius: 8px;
+    border: 1px dashed var(--primary-blue);
+}
+.qm-promo-icon {
+    font-size: 24px;
+    color: var(--primary-blue);
+    margin-right: 12px;
+}
+.qm-promo-text h4 {
+    margin: 0;
+    font-size: 14px;
+    color: var(--primary-blue);
+}
+.qm-promo-text p {
+    margin: 4px 0 0;
+    font-size: 12px;
+    color: var(--text-light);
+}
+
+.qm-dev-mode {
+    text-align: center;
+    padding: 20px;
+}
+.qm-dev-mode i {
+    font-size: 48px;
+    color: var(--text-light);
+    margin-bottom: 12px;
+}
+.qm-dev-mode p {
+    color: var(--text-light);
+}
+
+.qm-form-group {
+    margin-bottom: 16px;
+}
+.qm-form-group label {
+    display: block;
+    margin-bottom: 6px;
+    font-weight: 500;
+}
+.qm-form-group input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    font-family: 'Inter', sans-serif;
+}
+.qm-btn-submit {
+    width: 100%;
+    padding: 12px;
+    background: var(--primary-blue);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.qm-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+.qm-table th, .qm-table td {
+    padding: 10px;
+    border-bottom: 1px solid #eee;
+    text-align: left;
+}
+.qm-table th {
+    background: #f9fbfd;
+    font-weight: 600;
+}
+
+.qm-refund-steps {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+.qm-refund-steps li {
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 12px;
+}
+.qm-refund-steps .step-number {
+    width: 24px;
+    height: 24px;
+    background: var(--primary-blue);
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+    font-weight: bold;
+    margin-right: 12px;
+    flex-shrink: 0;
+}
