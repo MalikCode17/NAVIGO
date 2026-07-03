@@ -1,0 +1,476 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Navigo - Pesan Tiket Pesawat</title>
+    
+    <!-- Fonts & Icons -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/navbar.css">
+    <link rel="stylesheet" href="assets/css/hero.css">
+    <link rel="stylesheet" href="assets/css/search.css">
+    <link rel="stylesheet" href="assets/css/feature.css">
+    <link rel="stylesheet" href="assets/css/filter.css">
+    <link rel="stylesheet" href="assets/css/flight-card.css">
+    <link rel="stylesheet" href="assets/css/modal.css">
+</head>
+<body>
+
+    <!-- 1. NAVBAR SECTION -->
+    <header class="navbar-wrapper">
+        <nav class="navbar container">
+            <a href="index.html" class="logo">
+                <i class="fa-solid fa-plane-departure"></i>
+                <h1>Navigo</h1>
+            </a>
+            
+            <button class="hamburger" aria-label="Menu">
+                <i class="fa-solid fa-bars"></i>
+            </button>
+            
+            <ul class="nav-menu">
+                <li><a href="index.html" class="active"><i class="fa-solid fa-plane"></i> Pesawat</a></li>
+                <li><a href="pages/hotel.html"><i class="fa-solid fa-bed"></i> Hotel</a></li>
+                <li><a href="pages/kereta.html"><i class="fa-solid fa-train"></i> Kereta Api</a></li>
+                <li><a href="pages/mobil.html"><i class="fa-solid fa-car"></i> Sewa Mobil</a></li>
+                <li><a href="pages/entertainment.html"><i class="fa-solid fa-ticket"></i> Entertainment</a></li>
+            </ul>
+
+                        <div class="nav-right">
+                <div class="currency-btn dropdown">
+                    <button type="button" onclick="toggleDropdown('currency-dropdown')">IDR <i class="fa-solid fa-chevron-down"></i></button>
+                    <div class="dropdown-menu" id="currency-dropdown">
+                        <div class="dropdown-item">IDR - Indonesian Rupiah</div>
+                        <div class="dropdown-item">USD - US Dollar</div>
+                    </div>
+                </div>
+                <a href="pages/help.html" class="nav-link">Bantuan</a>
+                <a href="pages/history.html" class="nav-link">Cek Order</a>
+                <div class="dropdown">
+                    <button type="button" class="btn-icon" onclick="toggleDropdown('notif-dropdown')">
+                        <i class="fa-regular fa-bell"></i>
+                        <span class="badge">2</span>
+                    </button>
+                    <div class="dropdown-menu notif-menu" id="notif-dropdown">
+                        <div class="notif-header">
+                            <span>Notifikasi</span>
+                            <a href="#">Tandai sudah dibaca</a>
+                        </div>
+                        <div class="notif-list">
+                            <div class="notif-item unread">
+                                <div class="notif-icon"><i class="fa-solid fa-check"></i></div>
+                                <div class="notif-content">
+                                    <h4>Pembayaran Berhasil</h4>
+                                    <p>Pesanan tiket pesawat tujuan Bali telah lunas.</p>
+                                    <span class="notif-time">Baru saja</span>
+                                </div>
+                            </div>
+                            <div class="notif-item">
+                                <div class="notif-icon" style="background-color: #FFF3E0; color: #F59E0B;"><i class="fa-solid fa-ticket"></i></div>
+                                <div class="notif-content">
+                                    <h4>Promo Eksklusif</h4>
+                                    <p>Dapatkan diskon 20% untuk hotel di Jakarta.</p>
+                                    <span class="notif-time">2 jam yang lalu</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <a href="pages/profile.html" style="text-decoration: none;">
+                    <div class="avatar" title="Akun Saya">JD</div>
+                </a>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <!-- 2. HERO BANNER SECTION -->
+        <section class="hero-section container">
+            <div class="hero-banner">
+                <div class="hero-content">
+                    <h2 class="hero-title">Hey, mau ke mana?</h2>
+                    <p class="hero-subtitle">Pesan tiket pesawat dengan mudah dan nyaman bersama Navigo.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 3. SEARCH FLIGHT BOX SECTION -->
+        <section class="search-section container">
+            <div class="search-box">
+                <form id="flight-search-form" action="#" method="GET">
+                    <div class="search-fields">
+                        <div class="field-group location-group">
+                            <div class="field-item">
+                                <span class="field-label">Dari</span>
+                                <input type="text" class="search-input-native" value="Jakarta (CGK)">
+                                <div class="field-desc">Soekarno-Hatta Intl. Airport</div>
+                            </div>
+                            <button type="button" class="swap-btn" id="swap-location" aria-label="Tukar lokasi">
+                                <i class="fa-solid fa-arrow-right-arrow-left"></i>
+                            </button>
+                            <div class="field-item">
+                                <span class="field-label">Ke</span>
+                                <input type="text" class="search-input-native" value="Denpasar (DPS)">
+                                <div class="field-desc">Ngurah Rai Intl. Airport</div>
+                            </div>
+                        </div>
+
+                        <div class="vertical-divider"></div>
+
+                        <div class="field-group date-group">
+                            <div class="field-item">
+                                <span class="field-label">Berangkat</span>
+                                <input type="date" class="search-input-native" value="2024-05-18">
+                            </div>
+                            <div class="field-item">
+                                <span class="field-label">Pulang (Opsional)</span>
+                                <input type="date" class="search-input-native">
+                            </div>
+                        </div>
+
+                        <div class="vertical-divider"></div>
+
+                        <div class="field-group passenger-group">
+                            <div class="field-item">
+                                <span class="field-label">Penumpang & Kelas</span>
+                                <select class="search-input-native"><option>1 Penumpang</option><option>2 Penumpang</option><option>3 Penumpang</option></select>
+                                <div class="field-desc">Ekonomi</div>
+                            </div>
+                        </div>
+                        
+                        <div class="search-btn-wrapper">
+                            <button type="submit" class="btn-search">Cari Penerbangan</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </section>
+
+        <!-- 4. BENEFIT SECTION -->
+        <section class="benefit-section container" id="benefit">
+            <ul class="benefit-list">
+                <li class="benefit-item">
+                    <div class="benefit-icon"><i class="fa-solid fa-star"></i></div>
+                    <div class="benefit-text">
+                        <strong>Harga terbaik</strong>
+                        <p>Bandingkan dan hemat</p>
+                    </div>
+                </li>
+                <li class="benefit-item">
+                    <div class="benefit-icon"><i class="fa-solid fa-shield-halved"></i></div>
+                    <div class="benefit-text">
+                        <strong>Pembayaran aman</strong>
+                        <p>Transaksi 100% aman</p>
+                    </div>
+                </li>
+                <li class="benefit-item">
+                    <div class="benefit-icon"><i class="fa-solid fa-headset"></i></div>
+                    <div class="benefit-text">
+                        <strong>Customer Care 24/7</strong>
+                        <p>Siap membantu kapan saja</p>
+                    </div>
+                </li>
+            </ul>
+        </section>
+
+        <!-- 5. QUICK MENU SECTION -->
+        <section class="quick-menu-section container" id="quick-menu">
+            <ul class="quick-menu-list">
+                <li class="qm-item" style="cursor: pointer;" onclick="openQmModal('promo')">
+                    <div class="qm-icon blue"><i class="fa-solid fa-tag"></i></div>
+                    <div class="qm-text">
+                        <strong>Promo Spesial</strong>
+                        <p>Lihat semua promo</p>
+                    </div>
+                </li>
+                <li class="qm-item">
+                    <div class="qm-icon green"><i class="fa-solid fa-calendar-days"></i></div>
+                    <div class="qm-text">
+                        <strong>Kalender Harga</strong>
+                        <p>Lihat harga termurah</p>
+                    </div>
+                </li>
+                <li class="qm-item">
+                    <div class="qm-icon purple"><i class="fa-solid fa-chart-simple"></i></div>
+                    <div class="qm-text">
+                        <strong>Grafik Harga</strong>
+                        <p>Pantau harga tiket</p>
+                    </div>
+                </li>
+                <li class="qm-item">
+                    <div class="qm-icon orange"><i class="fa-solid fa-clipboard-check"></i></div>
+                    <div class="qm-text">
+                        <strong>Check-in Online</strong>
+                        <p>Check-in tanpa antre</p>
+                    </div>
+                </li>
+                <li class="qm-item">
+                    <div class="qm-icon lightblue"><i class="fa-solid fa-suitcase"></i></div>
+                    <div class="qm-text">
+                        <strong>Bagasi</strong>
+                        <p>Informasi bagasi</p>
+                    </div>
+                </li>
+                <li class="qm-item">
+                    <div class="qm-icon teal"><i class="fa-solid fa-circle-dollar-to-slot"></i></div>
+                    <div class="qm-text">
+                        <strong>Refund</strong>
+                        <p>Pengembalian dana</p>
+                    </div>
+                </li>
+            </ul>
+        </section>
+
+        <!-- 6. MAIN CONTENT SECTION -->
+        <section class="main-layout container" id="main-content">
+            
+            <!-- 6A. SIDEBAR FILTER -->
+            <aside class="sidebar-filter" id="sidebar-filter">
+                <div class="filter-header">
+                    <h3>Filter</h3>
+                    <button class="btn-reset" type="button">Reset</button>
+                </div>
+
+                <div class="filter-box">
+                    <form action="#" method="GET">
+                        <!-- Transit -->
+                        <div class="filter-group">
+                            <div class="filter-title">
+                                <h4>Transit</h4>
+                                <i class="fa-solid fa-chevron-up"></i>
+                            </div>
+                            <div class="filter-options">
+                                <label class="checkbox-label">
+                                    <input type="checkbox" class="filter-transit-cb" value="Langsung" checked>
+                                    <span class="checkmark"></span>
+                                    <span class="label-text">Langsung</span>
+                                    <span class="label-count">87</span>
+                                </label>
+                                <label class="checkbox-label">
+                                    <input type="checkbox">
+                                    <span class="checkmark"></span>
+                                    <span class="label-text">1 Transit</span>
+                                    <span class="label-count">24</span>
+                                </label>
+                                <label class="checkbox-label">
+                                    <input type="checkbox">
+                                    <span class="checkmark"></span>
+                                    <span class="label-text">2+ Transit</span>
+                                    <span class="label-count">5</span>
+                                </label>
+                            </div>
+                        </div>
+
+                        <!-- Waktu Berangkat -->
+                        <div class="filter-group">
+                            <div class="filter-title">
+                                <h4>Waktu Berangkat</h4>
+                                <i class="fa-solid fa-chevron-up"></i>
+                            </div>
+                            <div class="filter-options">
+                                <p class="time-range-desc">Berangkat (CGK ke DPS)</p>
+                                <p class="time-range-value">00:00 - 23:59</p>
+                                <input type="range" class="range-slider" min="0" max="24" value="24">
+                            </div>
+                        </div>
+
+                        <!-- Maskapai -->
+                        <div class="filter-group">
+                            <div class="filter-title">
+                                <h4>Maskapai</h4>
+                                <i class="fa-solid fa-chevron-up"></i>
+                            </div>
+                            <div class="filter-options">
+                                <div class="filter-search">
+                                    <i class="fa-solid fa-magnifying-glass"></i>
+                                    <input type="search" placeholder="Cari maskapai">
+                                </div>
+                                <label class="checkbox-label filter-airline">
+                                    <input type="checkbox" value="Lion Air" checked>
+                                    <span class="checkmark"></span>
+                                    <span class="label-text">Lion Air</span>
+                                    <span class="label-count">1</span>
+                                </label>
+                                <label class="checkbox-label filter-airline">
+                                    <input type="checkbox" value="Batik Air" checked>
+                                    <span class="checkmark"></span>
+                                    <span class="label-text">Batik Air</span>
+                                    <span class="label-count">1</span>
+                                </label>
+                                <label class="checkbox-label filter-airline">
+                                    <input type="checkbox" value="Citilink" checked>
+                                    <span class="checkmark"></span>
+                                    <span class="label-text">Citilink</span>
+                                    <span class="label-count">1</span>
+                                </label>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </aside>
+
+            <!-- 6B. FLIGHT LIST -->
+            <section class="flight-list-section" id="flight-list">
+                <div class="flight-list-header">
+                    <p class="flight-count">Menampilkan 87+ penerbangan terbaik</p>
+                    <div class="flight-sort">
+                        <label>Urutkan:</label>
+                        <select class="sort-select">
+                            <option>Harga Terendah</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="flight-cards-container">
+                    
+                    <!-- Card 1 -->
+                    <article class="flight-card" data-airline="Lion Air">
+                        <div class="airline-info">
+                            <div class="airline-brand">
+                                <img src="./assets/img/airline/logo-lion.jpg" alt="Lion Air" class="airline-logo">
+                                <span class="airline-name">Lion Air</span>
+                            </div>
+                            <div class="airline-facilities">
+                                <i class="fa-solid fa-suitcase-rolling"></i>
+                                <i class="fa-solid fa-utensils"></i>
+                                <span class="baggage">20kg</span>
+                            </div>
+                        </div>
+                        <div class="flight-schedule">
+                            <div class="departure">
+                                <time>11:25</time>
+                                <p>CGK</p>
+                                <span>Soekarno-Hatta Intl.</span>
+                            </div>
+                            <div class="flight-duration">
+                                <span>1j 55m</span>
+                                <div class="duration-line"><i class="fa-solid fa-plane"></i></div>
+                                <span>Langsung</span>
+                            </div>
+                            <div class="arrival">
+                                <time>14:20</time>
+                                <p>DPS</p>
+                                <span>Ngurah Rai Intl.</span>
+                            </div>
+                        </div>
+                        <div class="flight-price-action">
+                            <h4 class="price">IDR 829.000</h4>
+                            <p class="price-desc">/ penumpang</p>
+                            <button class="btn-select" onclick="window.location.href='pages/checkout.html?item=flight-lion'">Pilih</button>
+                        </div>
+                    </article>
+
+                    <!-- Card 2 -->
+                    <article class="flight-card" data-airline="Batik Air">
+                        <div class="airline-info">
+                            <div class="airline-brand">
+                                <img src="assets/img/airline/logo-batik.jpg" alt="Batik Air" class="airline-logo" style="width:50px;">
+                                <span class="airline-name">Batik Air</span>
+                            </div>
+                            <div class="airline-facilities">
+                                <i class="fa-solid fa-suitcase-rolling"></i>
+                                <i class="fa-solid fa-utensils"></i>
+                                <i class="fa-solid fa-tv"></i>
+                                <span class="baggage">20kg</span>
+                            </div>
+                        </div>
+                        <div class="flight-schedule">
+                            <div class="departure">
+                                <time>08:20</time>
+                                <p>CGK</p>
+                                <span>Soekarno-Hatta Intl.</span>
+                            </div>
+                            <div class="flight-duration">
+                                <span>1j 50m</span>
+                                <div class="duration-line"><i class="fa-solid fa-plane"></i></div>
+                                <span>Langsung</span>
+                            </div>
+                            <div class="arrival">
+                                <time>11:10</time>
+                                <p>DPS</p>
+                                <span>Ngurah Rai Intl.</span>
+                            </div>
+                        </div>
+                        <div class="flight-price-action">
+                            <h4 class="price">IDR 845.000</h4>
+                            <p class="price-desc">/ penumpang</p>
+                            <button class="btn-select" onclick="window.location.href='pages/checkout.html?item=flight-batik'">Pilih</button>
+                        </div>
+                    </article>
+
+                    <!-- Card 3 -->
+                    <article class="flight-card" data-airline="Citilink">
+                        <div class="airline-info">
+                            <div class="airline-brand">
+                                <img src="./assets/img/airline/logo-citilink.jpg" alt="Citilink" class="airline-logo" style="width:50px;">
+                                <span class="airline-name">Citilink</span>
+                            </div>
+                            <div class="airline-facilities">
+                                <i class="fa-solid fa-suitcase-rolling"></i>
+                                <i class="fa-solid fa-utensils"></i>
+                                <span class="baggage">20kg</span>
+                            </div>
+                        </div>
+                        <div class="flight-schedule">
+                            <div class="departure">
+                                <time>16:30</time>
+                                <p>CGK</p>
+                                <span>Soekarno-Hatta Intl.</span>
+                            </div>
+                            <div class="flight-duration">
+                                <span>1j 45m</span>
+                                <div class="duration-line"><i class="fa-solid fa-plane"></i></div>
+                                <span>Langsung</span>
+                            </div>
+                            <div class="arrival">
+                                <time>19:15</time>
+                                <p>DPS</p>
+                                <span>Ngurah Rai Intl.</span>
+                            </div>
+                        </div>
+                        <div class="flight-price-action">
+                            <h4 class="price">IDR 879.000</h4>
+                            <p class="price-desc">/ penumpang</p>
+                            <button class="btn-select" onclick="window.location.href='pages/checkout.html?item=flight-citilink'">Pilih</button>
+                        </div>
+                    </article>
+
+                </div>
+            </section>
+        </section>
+    </main>
+
+    <!-- 7. FOOTER SECTION -->
+    <footer class="site-footer">
+        <p>&copy; 2024 Navigo. All rights reserved. Created with pure HTML, CSS, and JS.</p>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="assets/js/utils.js"></script>
+    <script src="assets/js/storage.js"></script>
+    <script src="assets/js/navbar.js"></script>
+    <script src="assets/js/search.js"></script>
+    <script src="assets/js/main.js"></script>
+
+    <!-- QUICK MENU MODAL SYSTEM -->
+    <div class="qm-modal-overlay" id="qm-modal">
+        <div class="qm-modal-box">
+            <div class="qm-modal-header">
+                <h3 id="qm-modal-title">Judul Modal</h3>
+                <button class="qm-close-btn" onclick="closeQmModal()"><i class="fa-solid fa-xmark"></i></button>
+            </div>
+            <div class="qm-modal-body" id="qm-modal-body">
+                <!-- Content goes here dynamically -->
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>
