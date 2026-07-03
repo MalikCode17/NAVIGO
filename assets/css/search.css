@@ -1,0 +1,192 @@
+/* assets/css/search.css */
+
+/* ==========================================
+   SEARCH FLIGHT BOX COMPONENT
+   ========================================== */
+
+.search-section {
+    margin-top: -50px; /* Overlap ke dalam Hero Banner */
+    position: relative;
+    z-index: 10; /* Berada di atas hero banner */
+}
+
+.search-box {
+    background-color: var(--white, #FFFFFF);
+    border-radius: 24px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08); /* Efek bayangan premium */
+    padding: 32px 40px; /* Diperlebar */
+    margin: 0 auto;
+}
+
+.search-fields {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px; /* Diperlebar */
+}
+
+/* Mengelompokkan input */
+.field-group {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    flex: 1;
+}
+
+.location-group {
+    flex: 1.5; /* Porsi lebar lebih besar untuk lokasi */
+}
+
+/* Item per input (Dari, Ke, Berangkat) */
+.field-item {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    cursor: pointer;
+    padding: 8px 12px;
+    border-radius: 12px;
+    transition: background-color 0.2s;
+    flex: 1;
+}
+
+.field-item:hover {
+    background-color: var(--bg-light, #F8F9FA);
+}
+
+.field-label {
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--text-gray, #6B7280);
+}
+
+.field-value {
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--text-dark, #1F2937);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.field-value i {
+    color: var(--primary-blue, #0A58CA);
+}
+
+.field-value.add-date {
+    color: var(--text-gray, #6B7280);
+    font-weight: 600;
+}
+
+.field-desc {
+    font-size: 12px;
+    color: var(--text-gray, #9CA3AF);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 140px;
+}
+
+/* Tombol Tukar Lokasi (Swap) */
+.swap-btn {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background-color: var(--bg-light, #F3F4F6);
+    color: var(--primary-blue, #0A58CA);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    flex-shrink: 0;
+    box-shadow: var(--shadow-sm, 0 1px 2px rgba(0,0,0,0.05));
+}
+
+.swap-btn:hover {
+    background-color: var(--primary-blue, #0A58CA);
+    color: var(--white, #FFFFFF);
+}
+
+/* Garis Pemisah Antar Grup */
+.vertical-divider {
+    width: 1px;
+    height: 48px;
+    background-color: var(--border-color, #E5E7EB);
+}
+
+/* Tombol Cari Penerbangan */
+.btn-search {
+    background-color: var(--primary-blue, #0A58CA);
+    color: var(--white, #FFFFFF);
+    font-size: 16px;
+    font-weight: 600;
+    padding: 16px 24px;
+    border-radius: 12px;
+    transition: background-color 0.3s;
+    white-space: nowrap;
+}
+
+.btn-search:hover {
+    background-color: var(--primary-hover, #084298);
+}
+
+/* ==========================================
+   RESPONSIVE LAYOUT (MEDIA QUERIES)
+   ========================================== */
+@media (max-width: 1024px) {
+    .search-fields {
+        flex-wrap: wrap;
+    }
+    
+    .vertical-divider {
+        display: none;
+    }
+    
+    .field-group {
+        width: 100%;
+        flex: none;
+    }
+    
+    .search-btn-wrapper {
+        width: 100%;
+        margin-top: 16px;
+    }
+    
+    .btn-search {
+        width: 100%;
+    }
+}
+
+/* Native Input Replacements */
+.search-input-native {
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--text-dark, #1F2937);
+    border: none;
+    outline: none;
+    background: transparent;
+    cursor: pointer;
+    font-family: inherit;
+    width: 100%;
+    padding: 0;
+    margin: 0;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+}
+
+.search-input-native::-webkit-calendar-picker-indicator {
+    cursor: pointer;
+    opacity: 0.6;
+    transition: 0.2s;
+}
+
+.search-input-native::-webkit-calendar-picker-indicator:hover {
+    opacity: 1;
+}
+
+select.search-input-native {
+    background-image: url('data:image/svg+xml;utf8,<svg fill="%231F2937" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M7 10l5 5 5-5z"/></svg>');
+    background-repeat: no-repeat;
+    background-position: right center;
+    padding-right: 24px;
+}
