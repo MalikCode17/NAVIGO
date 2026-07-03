@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Navigo - Pesan Tiket Kereta Api</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Link CSS relative dari folder pages/ -->
+    <link rel="stylesheet" href="../assets/css/style.css">
+    <link rel="stylesheet" href="../assets/css/navbar.css">
+    <link rel="stylesheet" href="../assets/css/hero.css">
+    <link rel="stylesheet" href="../assets/css/search.css">
+    <link rel="stylesheet" href="../assets/css/feature.css">
+    <link rel="stylesheet" href="../assets/css/filter.css">
+    <link rel="stylesheet" href="../assets/css/train-card.css">
+</head>
+<body>
+
+    <header class="navbar-wrapper">
+        <nav class="navbar container">
+            <a href="../index.html" class="logo">
+                <i class="fa-solid fa-plane-departure"></i>
+                <h1>Navigo</h1>
+            </a>
+            
+            <button class="hamburger" aria-label="Menu">
+                <i class="fa-solid fa-bars"></i>
+            </button>
+            
+            <ul class="nav-menu">
+                <li><a href="../index.html"><i class="fa-solid fa-plane"></i> Pesawat</a></li>
+                <li><a href="hotel.html"><i class="fa-solid fa-bed"></i> Hotel</a></li>
+                <li><a href="kereta.html" class="active"><i class="fa-solid fa-train"></i> Kereta Api</a></li>
+                <li><a href="mobil.html"><i class="fa-solid fa-car"></i> Sewa Mobil</a></li>
+                <li><a href="entertainment.html"><i class="fa-solid fa-ticket"></i> Entertainment</a></li>
+            </ul>
+
+                        <div class="nav-right">
+                <div class="currency-btn dropdown">
+                    <button type="button" onclick="toggleDropdown('currency-dropdown')">IDR <i class="fa-solid fa-chevron-down"></i></button>
+                    <div class="dropdown-menu" id="currency-dropdown">
+                        <div class="dropdown-item">IDR - Indonesian Rupiah</div>
+                        <div class="dropdown-item">USD - US Dollar</div>
+                    </div>
+                </div>
+                <a href="help.html" class="nav-link">Bantuan</a>
+                <a href="history.html" class="nav-link">Cek Order</a>
+                <div class="dropdown">
+                    <button type="button" class="btn-icon" onclick="toggleDropdown('notif-dropdown')">
+                        <i class="fa-regular fa-bell"></i>
+                        <span class="badge">2</span>
+                    </button>
+                    <div class="dropdown-menu notif-menu" id="notif-dropdown">
+                        <div class="notif-header">
+                            <span>Notifikasi</span>
+                            <a href="#">Tandai sudah dibaca</a>
+                        </div>
+                        <div class="notif-list">
+                            <div class="notif-item unread">
+                                <div class="notif-icon"><i class="fa-solid fa-check"></i></div>
+                                <div class="notif-content">
+                                    <h4>Pembayaran Berhasil</h4>
+                                    <p>Pesanan tiket pesawat tujuan Bali telah lunas.</p>
+                                    <span class="notif-time">Baru saja</span>
+                                </div>
+                            </div>
+                            <div class="notif-item">
+                                <div class="notif-icon" style="background-color: #FFF3E0; color: #F59E0B;"><i class="fa-solid fa-ticket"></i></div>
+                                <div class="notif-content">
+                                    <h4>Promo Eksklusif</h4>
+                                    <p>Dapatkan diskon 20% untuk hotel di Jakarta.</p>
+                                    <span class="notif-time">2 jam yang lalu</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <a href="profile.html" style="text-decoration: none;">
+                    <div class="avatar" title="Akun Saya">JD</div>
+                </a>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <!-- HERO BANNER SECTION (OVERRIDE BACKGROUND VIA STYLE/CLASS) -->
+        <section class="hero-section container">
+            <div class="hero-banner" style="background-image: url('../assets/img/banner/hero-kereta.png');">
+                <div class="hero-content">
+                    <h2 class="hero-title">Jelajahi keindahan dengan kereta</h2>
+                    <p class="hero-subtitle">Pesan tiket kereta api mudah dan bebas antre bersama Navigo.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- SEARCH BOX SECTION -->
+        <section class="search-section container">
+            <div class="search-box">
+                <form id="train-search-form" action="#" method="GET">
+                    <div class="search-fields">
+                        <div class="field-group location-group">
+                            <div class="field-item">
+                                <span class="field-label">Stasiun Asal</span>
+                                <input type="text" class="search-input-native" value="Gambir (GMR)">
+                                <div class="field-desc">Jakarta, Indonesia</div>
+                            </div>
+                            <button type="button" class="swap-btn" id="swap-location" aria-label="Tukar lokasi">
+                                <i class="fa-solid fa-arrow-right-arrow-left"></i>
+                            </button>
+                            <div class="field-item">
+                                <span class="field-label">Stasiun Tujuan</span>
+                                <input type="text" class="search-input-native" value="Bandung (BDG)">
+                                <div class="field-desc">Jawa Barat, Indonesia</div>
+                            </div>
+                        </div>
+
+                        <div class="vertical-divider"></div>
+
+                        <div class="field-group date-group">
+                            <div class="field-item">
+                                <span class="field-label">Tanggal Pergi</span>
+                                <input type="date" class="search-input-native" value="2024-05-18">
+                            </div>
+                            <div class="field-item">
+                                <span class="field-label">Tanggal Pulang (Opsional)</span>
+                                <input type="date" class="search-input-native">
+                            </div>
+                        </div>
+
+                        <div class="vertical-divider"></div>
+
+                        <div class="field-group passenger-group">
+                            <div class="field-item">
+                                <span class="field-label">Penumpang</span>
+                                <select class="search-input-native"><option>1 Dewasa, 0 Bayi</option><option>Opsi Lainnya 1</option><option>Opsi Lainnya 2</option></select>
+                                <div class="field-desc">Kelas Bebas</div>
+                            </div>
+                        </div>
+                        
+                        <div class="search-btn-wrapper">
+                            <button type="submit" class="btn-search">Cari Tiket</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </section>
+
+        <!-- BENEFIT SECTION -->
+        <section class="benefit-section container" id="benefit">
+            <ul class="benefit-list">
+                <li class="benefit-item">
+                    <div class="benefit-icon"><i class="fa-solid fa-ticket"></i></div>
+                    <div class="benefit-text">
+                        <strong>Bebas Antre</strong>
+                        <p>Tiket langsung dikirim e-mail</p>
+                    </div>
+                </li>
+                <li class="benefit-item">
+                    <div class="benefit-icon"><i class="fa-solid fa-chair"></i></div>
+                    <div class="benefit-text">
+                        <strong>Pilihan Kursi</strong>
+                        <p>Bebas pilih kursi favorit</p>
+                    </div>
+                </li>
+                <li class="benefit-item">
+                    <div class="benefit-icon"><i class="fa-solid fa-map-location-dot"></i></div>
+                    <div class="benefit-text">
+                        <strong>Beragam Rute</strong>
+                        <p>Jelajahi seluruh Nusantara</p>
+                    </div>
+                </li>
+            </ul>
+        </section>
+
+        <!-- QUICK MENU SECTION -->
+        <section class="quick-menu-section container" id="quick-menu">
+            <ul class="quick-menu-list">
+                <li class="qm-item">
+                    <div class="qm-icon blue"><i class="fa-solid fa-train-tram"></i></div>
+                    <div class="qm-text">
+                        <strong>Kereta Panoramic</strong>
+                        <p>Nikmati pemandangan</p>
+                    </div>
+                </li>
+                <li class="qm-item">
+                    <div class="qm-icon green"><i class="fa-solid fa-crown"></i></div>
+                    <div class="qm-text">
+                        <strong>Kereta Luxury</strong>
+                        <p>Kenyamanan ekstra</p>
+                    </div>
+                </li>
+                <li class="qm-item">
+                    <div class="qm-icon purple"><i class="fa-solid fa-burger"></i></div>
+                    <div class="qm-text">
+                        <strong>Pesan Makanan</strong>
+                        <p>Pre-order makanan KAI</p>
+                    </div>
+                </li>
+                <li class="qm-item">
+                    <div class="qm-icon orange"><i class="fa-solid fa-circle-info"></i></div>
+                    <div class="qm-text">
+                        <strong>Info Stasiun</strong>
+                        <p>Cek fasilitas stasiun</p>
+                    </div>
+                </li>
+            </ul>
+        </section>
+
+        <!-- MAIN CONTENT SECTION -->
+        <section class="main-layout container" id="main-content">
+            
+            <!-- SIDEBAR FILTER -->
+            <aside class="sidebar-filter" id="sidebar-filter">
+                <div class="filter-header">
+                    <h3>Filter</h3>
+                    <button class="btn-reset" type="button">Reset</button>
+                </div>
+
+                <div class="filter-box">
+                    <form action="#" method="GET">
+                        <!-- Kelas -->
+                        <div class="filter-group">
+                            <div class="filter-title">
+                                <h4>Kelas Kereta</h4>
+                                <i class="fa-solid fa-chevron-up"></i>
+                            </div>
+                            <div class="filter-options">
+                                <label class="checkbox-label">
+                                    <input type="checkbox" checked>
+                                    <span class="checkmark"></span>
+                                    <span class="label-text">Eksekutif</span>
+                                    <span class="label-count">12</span>
+                                </label>
+                                <label class="checkbox-label">
+                                    <input type="checkbox" checked>
+                                    <span class="checkmark"></span>
+                                    <span class="label-text">Bisnis</span>
+                                    <span class="label-count">4</span>
+                                </label>
+                                <label class="checkbox-label">
+                                    <input type="checkbox" checked>
+                                    <span class="checkmark"></span>
+                                    <span class="label-text">Ekonomi</span>
+                                    <span class="label-count">16</span>
+                                </label>
+                            </div>
+                        </div>
+
+                        <!-- Waktu Keberangkatan -->
+                        <div class="filter-group">
+                            <div class="filter-title">
+                                <h4>Waktu Keberangkatan</h4>
+                                <i class="fa-solid fa-chevron-up"></i>
+                            </div>
+                            <div class="filter-options">
+                                <label class="checkbox-label">
+                                    <input type="checkbox">
+                                    <span class="checkmark"></span>
+                                    <span class="label-text">Pagi (00:00 - 12:00)</span>
+                                    <span class="label-count">14</span>
+                                </label>
+                                <label class="checkbox-label">
+                                    <input type="checkbox">
+                                    <span class="checkmark"></span>
+                                    <span class="label-text">Siang (12:00 - 18:00)</span>
+                                    <span class="label-count">10</span>
+                                </label>
+                                <label class="checkbox-label">
+                                    <input type="checkbox">
+                                    <span class="checkmark"></span>
+                                    <span class="label-text">Malam (18:00 - 24:00)</span>
+                                    <span class="label-count">8</span>
+                                </label>
+                            </div>
+                        </div>
+
+                        <!-- Nama Kereta -->
+                        <div class="filter-group">
+                            <div class="filter-title">
+                                <h4>Nama Kereta</h4>
+                                <i class="fa-solid fa-chevron-up"></i>
+                            </div>
+                            <div class="filter-options">
+                                <label class="checkbox-label">
+                                    <input type="checkbox">
+                                    <span class="checkmark"></span>
+                                    <span class="label-text">Argo Parahyangan</span>
+                                    <span class="label-count">16</span>
+                                </label>
+                                <label class="checkbox-label">
+                                    <input type="checkbox">
+                                    <span class="checkmark"></span>
+                                    <span class="label-text">Turangga</span>
+                                    <span class="label-count">2</span>
+                                </label>
+                                <label class="checkbox-label">
+                                    <input type="checkbox">
+                                    <span class="checkmark"></span>
+                                    <span class="label-text">Lodaya</span>
+                                    <span class="label-count">4</span>
+                                </label>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </aside>
+
+            <!-- TRAIN LIST -->
+            <section class="flight-list-section" id="train-list">
+                <div class="train-list-header">
+                    <p class="train-count">Menampilkan 32 kereta dari Jakarta ke Bandung</p>
+                    <div class="train-sort">
+                        <label>Urutkan:</label>
+                        <select class="sort-select">
+                            <option>Keberangkatan Awal</option>
+                            <option>Harga Terendah</option>
+                            <option>Durasi Tercepat</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="train-cards-container">
+                    
+                    <!-- Card 1 -->
+                    <article class="train-card">
+                        <div class="train-info">
+                            <div class="train-brand">
+                                <img src="../assets/img/logo/logo-kai.jpg" alt="KAI Logo" class="train-logo">
+                                <div>
+                                    <div class="train-name">Argo Parahyangan</div>
+                                    <div class="train-class">Eksekutif (A)</div>
+                                </div>
+                            </div>
+                            <div class="train-facilities">
+                                <i class="fa-solid fa-snowflake"></i>
+                                <i class="fa-solid fa-plug"></i>
+                                <i class="fa-solid fa-utensils"></i>
+                            </div>
+                        </div>
+                        <div class="train-schedule">
+                            <div class="departure">
+                                <time>06:30</time>
+                                <p>GMR</p>
+                                <span>Gambir</span>
+                            </div>
+                            <div class="train-duration">
+                                <span>2j 45m</span>
+                                <div class="duration-line"><i class="fa-solid fa-train"></i></div>
+                                <span>Langsung</span>
+                            </div>
+                            <div class="arrival">
+                                <time>09:15</time>
+                                <p>BDG</p>
+                                <span>Bandung</span>
+                            </div>
+                        </div>
+                        <div class="train-price-action">
+                            <h4 class="price">IDR 250.000</h4>
+                            <p class="price-desc">/ penumpang</p>
+                            <button class="btn-select" onclick="window.location.href='checkout-train.html?item=train-argo-eks'">Pilih</button>
+                        </div>
+                    </article>
+
+                    <!-- Card 2 -->
+                    <article class="train-card">
+                        <div class="train-info">
+                            <div class="train-brand">
+                                <img src="../assets/img/logo/logo-kai.jpg" alt="KAI Logo" class="train-logo">
+                                <div>
+                                    <div class="train-name">Argo Parahyangan</div>
+                                    <div class="train-class">Ekonomi (C)</div>
+                                </div>
+                            </div>
+                            <div class="train-facilities">
+                                <i class="fa-solid fa-snowflake"></i>
+                                <i class="fa-solid fa-plug"></i>
+                                <i class="fa-solid fa-utensils"></i>
+                            </div>
+                        </div>
+                        <div class="train-schedule">
+                            <div class="departure">
+                                <time>06:30</time>
+                                <p>GMR</p>
+                                <span>Gambir</span>
+                            </div>
+                            <div class="train-duration">
+                                <span>2j 45m</span>
+                                <div class="duration-line"><i class="fa-solid fa-train"></i></div>
+                                <span>Langsung</span>
+                            </div>
+                            <div class="arrival">
+                                <time>09:15</time>
+                                <p>BDG</p>
+                                <span>Bandung</span>
+                            </div>
+                        </div>
+                        <div class="train-price-action">
+                            <h4 class="price">IDR 150.000</h4>
+                            <p class="price-desc">/ penumpang</p>
+                            <button class="btn-select" onclick="window.location.href='checkout-train.html?item=train-argo-eko'">Pilih</button>
+                        </div>
+                    </article>
+
+                    <!-- Card 3 -->
+                    <article class="train-card">
+                        <div class="train-info">
+                            <div class="train-brand">
+                                <img src="../assets/img/logo/logo-kai.jpg" alt="KAI Logo" class="train-logo">
+                                <div>
+                                    <div class="train-name">Turangga</div>
+                                    <div class="train-class">Eksekutif (AA)</div>
+                                </div>
+                            </div>
+                            <div class="train-facilities">
+                                <i class="fa-solid fa-snowflake"></i>
+                                <i class="fa-solid fa-plug"></i>
+                                <i class="fa-solid fa-utensils"></i>
+                            </div>
+                        </div>
+                        <div class="train-schedule">
+                            <div class="departure">
+                                <time>10:15</time>
+                                <p>GMR</p>
+                                <span>Gambir</span>
+                            </div>
+                            <div class="train-duration">
+                                <span>2j 45m</span>
+                                <div class="duration-line"><i class="fa-solid fa-train"></i></div>
+                                <span>Langsung</span>
+                            </div>
+                            <div class="arrival">
+                                <time>13:00</time>
+                                <p>BDG</p>
+                                <span>Bandung</span>
+                            </div>
+                        </div>
+                        <div class="train-price-action">
+                            <h4 class="price">IDR 280.000</h4>
+                            <p class="price-desc">/ penumpang</p>
+                            <button class="btn-select" onclick="window.location.href='checkout-train.html?item=train-turangga'">Pilih</button>
+                        </div>
+                    </article>
+
+                </div>
+            </section>
+        </section>
+    </main>
+
+    <!-- FOOTER SECTION -->
+    <footer class="site-footer">
+        <p>&copy; 2024 Navigo. All rights reserved. Created with pure HTML, CSS, and JS.</p>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="../assets/js/utils.js"></script>
+    <script src="../assets/js/storage.js"></script>
+    <script src="../assets/js/navbar.js"></script>
+    <script src="../assets/js/search.js"></script>
+    <script src="../assets/js/main.js"></script>
+</body>
+</html>
