@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Masuk | Navigo</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <link rel="stylesheet" href="../assets/css/style.css">
+    <link rel="stylesheet" href="../assets/css/auth.css">
+</head>
+<body>
+
+    <main class="auth-layout">
+        
+        <!-- BAGIAN KIRI: GAMBAR & BRANDING -->
+        <div class="auth-banner" style="background-image: url('../assets/img/banner/hero-pesawat.png');">
+            <div class="auth-banner-content">
+                <a href="../index.html" class="auth-logo">
+                    <i class="fa-solid fa-plane-departure"></i>
+                    <span>Navigo</span>
+                </a>
+            </div>
+            <div class="auth-quote">
+                <h2>Jelajahi dunia dengan cara yang lebih mudah.</h2>
+                <p>Masuk ke akun Anda untuk mengatur pemesanan, melihat riwayat tiket, dan menikmati diskon eksklusif member.</p>
+            </div>
+        </div>
+
+        <!-- BAGIAN KANAN: FORM LOGIN -->
+        <div class="auth-form-container">
+            <a href="../index.html" class="btn-back"><i class="fa-solid fa-arrow-left"></i> Kembali ke Beranda</a>
+            
+            <div class="auth-header">
+                <h2>Selamat Datang Kembali</h2>
+                <p>Silakan masuk menggunakan email dan password Anda.</p>
+            </div>
+
+            <form action="../index.html" method="GET">
+                <div class="form-group">
+                    <label for="email">Alamat Email</label>
+                    <div class="input-wrapper">
+                        <i class="fa-regular fa-envelope"></i>
+                        <input type="email" id="email" name="email" placeholder="contoh@email.com" required>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="password">Kata Sandi</label>
+                    <div class="input-wrapper">
+                        <i class="fa-solid fa-lock"></i>
+                        <input type="password" id="password" name="password" placeholder="Masukkan kata sandi" required>
+                        <button type="button" class="btn-toggle-password" id="toggle-password">
+                            <i class="fa-regular fa-eye-slash"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="auth-options">
+                    <label class="checkbox-label">
+                        <input type="checkbox" name="remember" checked>
+                        Ingat Saya
+                    </label>
+                    <a href="#" class="forgot-password">Lupa Kata Sandi?</a>
+                </div>
+
+                <button type="submit" class="btn-auth">Masuk</button>
+            </form>
+
+            <div class="auth-divider">
+                <span>Atau masuk dengan</span>
+            </div>
+
+            <div class="social-login">
+                <button type="button" class="btn-social">
+                    <i class="fa-brands fa-google" style="color: #DB4437;"></i>
+                    Google
+                </button>
+                <button type="button" class="btn-social">
+                    <i class="fa-brands fa-facebook" style="color: #4267B2;"></i>
+                    Facebook
+                </button>
+            </div>
+
+            <div class="auth-footer">
+                Belum punya akun? <a href="register.html">Daftar Sekarang</a>
+            </div>
+        </div>
+
+    </main>
+
+    <script src="../assets/js/main.js"></script>
+    <script>
+        // Fitur Show/Hide Password
+        document.getElementById('toggle-password').addEventListener('click', function() {
+            const passwordInput = document.getElementById('password');
+            const icon = this.querySelector('i');
+            
+            if (passwordInput.type === 'password') {
+                passwordInput.type = 'text';
+                icon.classList.remove('fa-eye-slash');
+                icon.classList.add('fa-eye');
+            } else {
+                passwordInput.type = 'password';
+                icon.classList.remove('fa-eye');
+                icon.classList.add('fa-eye-slash');
+            }
+        });
+
+        // Set login status
+        document.querySelector('form').addEventListener('submit', function(e) {
+            localStorage.setItem('navigo_logged_in', 'true');
+        });
+    </script>
+</body>
+</html>
