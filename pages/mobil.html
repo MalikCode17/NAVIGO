@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Navigo - Sewa Mobil Lepas Kunci & Dengan Sopir</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <link rel="stylesheet" href="../assets/css/style.css">
+    <link rel="stylesheet" href="../assets/css/navbar.css">
+    <link rel="stylesheet" href="../assets/css/hero.css">
+    <link rel="stylesheet" href="../assets/css/search.css">
+    <link rel="stylesheet" href="../assets/css/feature.css">
+    <link rel="stylesheet" href="../assets/css/filter.css">
+    <link rel="stylesheet" href="../assets/css/car-card.css">
+</head>
+<body>
+
+    <header class="navbar-wrapper">
+        <nav class="navbar container">
+            <a href="../index.html" class="logo">
+                <i class="fa-solid fa-plane-departure"></i>
+                <h1>Navigo</h1>
+            </a>
+            
+            <button class="hamburger" aria-label="Menu">
+                <i class="fa-solid fa-bars"></i>
+            </button>
+            
+            <ul class="nav-menu">
+                <li><a href="../index.html"><i class="fa-solid fa-plane"></i> Pesawat</a></li>
+                <li><a href="hotel.html"><i class="fa-solid fa-bed"></i> Hotel</a></li>
+                <li><a href="kereta.html"><i class="fa-solid fa-train"></i> Kereta Api</a></li>
+                <li><a href="mobil.html" class="active"><i class="fa-solid fa-car"></i> Sewa Mobil</a></li>
+                <li><a href="entertainment.html"><i class="fa-solid fa-ticket"></i> Entertainment</a></li>
+            </ul>
+
+                        <div class="nav-right">
+                <div class="currency-btn dropdown">
+                    <button type="button" onclick="toggleDropdown('currency-dropdown')">IDR <i class="fa-solid fa-chevron-down"></i></button>
+                    <div class="dropdown-menu" id="currency-dropdown">
+                        <div class="dropdown-item">IDR - Indonesian Rupiah</div>
+                        <div class="dropdown-item">USD - US Dollar</div>
+                    </div>
+                </div>
+                <a href="help.html" class="nav-link">Bantuan</a>
+                <a href="history.html" class="nav-link">Cek Order</a>
+                <div class="dropdown">
+                    <button type="button" class="btn-icon" onclick="toggleDropdown('notif-dropdown')">
+                        <i class="fa-regular fa-bell"></i>
+                        <span class="badge">2</span>
+                    </button>
+                    <div class="dropdown-menu notif-menu" id="notif-dropdown">
+                        <div class="notif-header">
+                            <span>Notifikasi</span>
+                            <a href="#">Tandai sudah dibaca</a>
+                        </div>
+                        <div class="notif-list">
+                            <div class="notif-item unread">
+                                <div class="notif-icon"><i class="fa-solid fa-check"></i></div>
+                                <div class="notif-content">
+                                    <h4>Pembayaran Berhasil</h4>
+                                    <p>Pesanan tiket pesawat tujuan Bali telah lunas.</p>
+                                    <span class="notif-time">Baru saja</span>
+                                </div>
+                            </div>
+                            <div class="notif-item">
+                                <div class="notif-icon" style="background-color: #FFF3E0; color: #F59E0B;"><i class="fa-solid fa-ticket"></i></div>
+                                <div class="notif-content">
+                                    <h4>Promo Eksklusif</h4>
+                                    <p>Dapatkan diskon 20% untuk hotel di Jakarta.</p>
+                                    <span class="notif-time">2 jam yang lalu</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <a href="profile.html" style="text-decoration: none;">
+                    <div class="avatar" title="Akun Saya">JD</div>
+                </a>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <!-- HERO BANNER SECTION -->
+        <section class="hero-section container">
+            <div class="hero-banner" style="background-image: url('../assets/img/banner/hero-mobil.png');">
+                <div class="hero-content">
+                    <h2 class="hero-title">Solusi bebas hambatan</h2>
+                    <p class="hero-subtitle">Pesan mobil untuk keperluan perjalanan, lepas kunci atau dengan sopir.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- SEARCH BOX SECTION -->
+        <section class="search-section container">
+            <div class="search-box">
+                <form id="car-search-form" action="#" method="GET">
+                    <div class="search-fields">
+                        <div class="field-group location-group" style="flex: 1.5;">
+                            <div class="field-item">
+                                <span class="field-label">Lokasi Sewa</span>
+                                <input type="text" class="search-input-native" value="Bali">
+                                <div class="field-desc">Bandara, Kota, atau Wilayah</div>
+                            </div>
+                        </div>
+
+                        <div class="vertical-divider"></div>
+
+                        <div class="field-group date-group" style="flex: 2;">
+                            <div class="field-item">
+                                <span class="field-label">Mulai Sewa</span>
+                                <input type="date" class="search-input-native" value="2024-05-18">
+                                <div class="field-desc">09:00</div>
+                            </div>
+                            <div class="field-item">
+                                <span class="field-label">Akhir Sewa</span>
+                                <input type="date" class="search-input-native" value="2024-05-18">
+                                <div class="field-desc">09:00</div>
+                            </div>
+                        </div>
+
+                        <div class="vertical-divider"></div>
+
+                        <div class="field-group passenger-group" style="flex: 1;">
+                            <div class="field-item">
+                                <span class="field-label">Layanan</span>
+                                <select class="search-input-native"><option>Lepas Kunci</option><option>Opsi Lainnya 1</option><option>Opsi Lainnya 2</option></select>
+                                <div class="field-desc">Tanpa Sopir</div>
+                            </div>
+                        </div>
+                        
+                        <div class="search-btn-wrapper">
+                            <button type="submit" class="btn-search">Cari Mobil</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </section>
+
+        <!-- BENEFIT SECTION -->
+        <section class="benefit-section container" id="benefit">
+            <ul class="benefit-list">
+                <li class="benefit-item">
+                    <div class="benefit-icon"><i class="fa-solid fa-car-on"></i></div>
+                    <div class="benefit-text">
+                        <strong>Mobil Terawat</strong>
+                        <p>Kondisi prima & bersih</p>
+                    </div>
+                </li>
+                <li class="benefit-item">
+                    <div class="benefit-icon"><i class="fa-solid fa-shield-halved"></i></div>
+                    <div class="benefit-text">
+                        <strong>Asuransi Dasar</strong>
+                        <p>Perjalanan lebih tenang</p>
+                    </div>
+                </li>
+                <li class="benefit-item">
+                    <div class="benefit-icon"><i class="fa-solid fa-user-tie"></i></div>
+                    <div class="benefit-text">
+                        <strong>Sopir Berpengalaman</strong>
+                        <p>Hafal rute & ramah</p>
+                    </div>
+                </li>
+            </ul>
+        </section>
+
+        <!-- QUICK MENU SECTION -->
+        <section class="quick-menu-section container" id="quick-menu">
+            <ul class="quick-menu-list">
+                <li class="qm-item">
+                    <div class="qm-icon blue"><i class="fa-solid fa-key"></i></div>
+                    <div class="qm-text">
+                        <strong>Lepas Kunci</strong>
+                        <p>Bebas kemanapun</p>
+                    </div>
+                </li>
+                <li class="qm-item">
+                    <div class="qm-icon green"><i class="fa-solid fa-user-plus"></i></div>
+                    <div class="qm-text">
+                        <strong>Dengan Sopir</strong>
+                        <p>Duduk santai di jalan</p>
+                    </div>
+                </li>
+                <li class="qm-item">
+                    <div class="qm-icon purple"><i class="fa-solid fa-plane-arrival"></i></div>
+                    <div class="qm-text">
+                        <strong>Antar Bandara</strong>
+                        <p>Jemput tepat waktu</p>
+                    </div>
+                </li>
+                <li class="qm-item">
+                    <div class="qm-icon orange"><i class="fa-solid fa-van-shuttle"></i></div>
+                    <div class="qm-text">
+                        <strong>Sewa Minibus</strong>
+                        <p>Untuk rombongan besar</p>
+                    </div>
+                </li>
+            </ul>
+        </section>
+
+        <!-- MAIN CONTENT SECTION -->
+        <section class="main-layout container" id="main-content">
+            
+            <!-- SIDEBAR FILTER -->
+            <aside class="sidebar-filter" id="sidebar-filter">
+                <div class="filter-header">
+                    <h3>Filter</h3>
+                    <button class="btn-reset" type="button">Reset</button>
+                </div>
+
+                <div class="filter-box">
+                    <form action="#" method="GET">
+                        <!-- Tipe Mobil -->
+                        <div class="filter-group">
+                            <div class="filter-title">
+                                <h4>Tipe Mobil</h4>
+                                <i class="fa-solid fa-chevron-up"></i>
+                            </div>
+                            <div class="filter-options">
+                                <label class="checkbox-label">
+                                    <input type="checkbox" checked>
+                                    <span class="checkmark"></span>
+                                    <span class="label-text">MPV</span>
+                                    <span class="label-count">42</span>
+                                </label>
+                                <label class="checkbox-label">
+                                    <input type="checkbox">
+                                    <span class="checkmark"></span>
+                                    <span class="label-text">SUV</span>
+                                    <span class="label-count">15</span>
+                                </label>
+                                <label class="checkbox-label">
+                                    <input type="checkbox">
+                                    <span class="checkmark"></span>
+                                    <span class="label-text">Sedan / Hatchback</span>
+                                    <span class="label-count">8</span>
+                                </label>
+                            </div>
+                        </div>
+
+                        <!-- Kapasitas -->
+                        <div class="filter-group">
+                            <div class="filter-title">
+                                <h4>Kapasitas</h4>
+                                <i class="fa-solid fa-chevron-up"></i>
+                            </div>
+                            <div class="filter-options">
+                                <label class="checkbox-label">
+                                    <input type="checkbox">
+                                    <span class="checkmark"></span>
+                                    <span class="label-text">> 6 Kursi</span>
+                                    <span class="label-count">35</span>
+                                </label>
+                                <label class="checkbox-label">
+                                    <input type="checkbox">
+                                    <span class="checkmark"></span>
+                                    <span class="label-text">5-6 Kursi</span>
+                                    <span class="label-count">24</span>
+                                </label>
+                                <label class="checkbox-label">
+                                    <input type="checkbox">
+                                    <span class="checkmark"></span>
+                                    <span class="label-text">< 5 Kursi</span>
+                                    <span class="label-count">6</span>
+                                </label>
+                            </div>
+                        </div>
+
+                        <!-- Transmisi -->
+                        <div class="filter-group">
+                            <div class="filter-title">
+                                <h4>Transmisi</h4>
+                                <i class="fa-solid fa-chevron-up"></i>
+                            </div>
+                            <div class="filter-options">
+                                <label class="checkbox-label">
+                                    <input type="checkbox" checked>
+                                    <span class="checkmark"></span>
+                                    <span class="label-text">Automatic (A/T)</span>
+                                    <span class="label-count">56</span>
+                                </label>
+                                <label class="checkbox-label">
+                                    <input type="checkbox">
+                                    <span class="checkmark"></span>
+                                    <span class="label-text">Manual (M/T)</span>
+                                    <span class="label-count">9</span>
+                                </label>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </aside>
+
+            <!-- CAR LIST -->
+            <section class="flight-list-section" id="car-list">
+                <div class="car-list-header">
+                    <p class="car-count">Menampilkan 65 mobil di Bali</p>
+                    <div class="car-sort">
+                        <label>Urutkan:</label>
+                        <select class="sort-select">
+                            <option>Rekomendasi Utama</option>
+                            <option>Harga Terendah</option>
+                            <option>Review Tertinggi</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="car-cards-container">
+                    
+                    <!-- Card 1 -->
+                    <article class="car-card">
+                        <div class="car-image">
+                            <!-- Foto mobil menggunakan lokal -->
+                            <img src="../assets/img/banner/car-1.png" alt="Toyota Avanza">
+                        </div>
+                        <div class="car-details">
+                            <div class="car-header">
+                                <div>
+                                    <h3 class="car-name">Toyota Avanza atau sejenis</h3>
+                                    <div class="car-type">MPV • Tahun 2020-2023</div>
+                                    <div class="car-facilities">
+                                        <div class="facility-item"><i class="fa-solid fa-user-group"></i> 7 Kursi</div>
+                                        <div class="facility-item"><i class="fa-solid fa-suitcase"></i> 2 Koper</div>
+                                        <div class="facility-item"><i class="fa-solid fa-gears"></i> Automatic</div>
+                                    </div>
+                                </div>
+                                <div class="car-vendor">
+                                    <span class="vendor-badge"><i class="fa-solid fa-check-circle"></i> Vendor Terpercaya</span>
+                                    <div style="font-size: 13px; color: var(--text-gray); margin-top: 8px;">Disediakan oleh <b>Bali Rent Car</b></div>
+                                </div>
+                            </div>
+                            <div class="car-footer">
+                                <div class="car-policy">
+                                    <div class="policy-item"><i class="fa-solid fa-check"></i> Bisa Refund</div>
+                                    <div class="policy-item"><i class="fa-solid fa-check"></i> Termasuk Asuransi Dasar</div>
+                                </div>
+                                <div class="car-price">
+                                    <h4 class="price">IDR 300.000</h4>
+                                    <p class="price-desc">/ hari</p>
+                                    <button class="btn-select-car" onclick="window.location.href='checkout-car.html?item=car-avanza'">Pilih Mobil</button>
+                                </div>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Card 2 -->
+                    <article class="car-card">
+                        <div class="car-image">
+                            <img src="../assets/img/banner/car-2.png" alt="Mitsubishi Xpander">
+                        </div>
+                        <div class="car-details">
+                            <div class="car-header">
+                                <div>
+                                    <h3 class="car-name">Mitsubishi Xpander</h3>
+                                    <div class="car-type">MPV Premium • Tahun 2021-2023</div>
+                                    <div class="car-facilities">
+                                        <div class="facility-item"><i class="fa-solid fa-user-group"></i> 7 Kursi</div>
+                                        <div class="facility-item"><i class="fa-solid fa-suitcase"></i> 3 Koper</div>
+                                        <div class="facility-item"><i class="fa-solid fa-gears"></i> Automatic</div>
+                                    </div>
+                                </div>
+                                <div class="car-vendor">
+                                    <span class="vendor-badge"><i class="fa-solid fa-check-circle"></i> Vendor Terpercaya</span>
+                                    <div style="font-size: 13px; color: var(--text-gray); margin-top: 8px;">Disediakan oleh <b>Mitra Trans Bali</b></div>
+                                </div>
+                            </div>
+                            <div class="car-footer">
+                                <div class="car-policy">
+                                    <div class="policy-item"><i class="fa-solid fa-check"></i> Bisa Refund</div>
+                                </div>
+                                <div class="car-price">
+                                    <h4 class="price">IDR 450.000</h4>
+                                    <p class="price-desc">/ hari</p>
+                                    <button class="btn-select-car" onclick="window.location.href='checkout-car.html?item=car-innova'">Pilih Mobil</button>
+                                </div>
+                            </div>
+                        </div>
+                    </article>
+
+                </div>
+            </section>
+        </section>
+    </main>
+
+    <!-- FOOTER SECTION -->
+    <footer class="site-footer">
+        <p>&copy; 2024 Navigo. All rights reserved. Created with pure HTML, CSS, and JS.</p>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="../assets/js/utils.js"></script>
+    <script src="../assets/js/storage.js"></script>
+    <script src="../assets/js/navbar.js"></script>
+    <script src="../assets/js/search.js"></script>
+    <script src="../assets/js/main.js"></script>
+</body>
+</html>
