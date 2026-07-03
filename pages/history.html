@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Riwayat Pesanan | Navigo</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <link rel="stylesheet" href="../assets/css/style.css">
+    <link rel="stylesheet" href="../assets/css/navbar.css">
+    <link rel="stylesheet" href="../assets/css/history.css">
+</head>
+<body>
+
+    <!-- NAVBAR WITH DROPDOWNS -->
+    <header class="navbar-wrapper">
+        <nav class="navbar container">
+            <a href="../index.html" class="logo">
+                <i class="fa-solid fa-plane-departure"></i>
+                <h1>Navigo</h1>
+            </a>
+            
+            <button class="hamburger" aria-label="Menu">
+                <i class="fa-solid fa-bars"></i>
+            </button>
+            
+            <ul class="nav-menu">
+                <li><a href="../index.html"><i class="fa-solid fa-plane"></i> Pesawat</a></li>
+                <li><a href="hotel.html"><i class="fa-solid fa-bed"></i> Hotel</a></li>
+                <li><a href="kereta.html"><i class="fa-solid fa-train"></i> Kereta Api</a></li>
+                <li><a href="mobil.html"><i class="fa-solid fa-car"></i> Sewa Mobil</a></li>
+                <li><a href="entertainment.html"><i class="fa-solid fa-ticket"></i> Entertainment</a></li>
+            </ul>
+
+            <div class="nav-right">
+                <div class="currency-btn dropdown">
+                    <button type="button" onclick="toggleDropdown('currency-dropdown')">IDR <i class="fa-solid fa-chevron-down"></i></button>
+                    <div class="dropdown-menu" id="currency-dropdown">
+                        <div class="dropdown-item">IDR - Indonesian Rupiah</div>
+                        <div class="dropdown-item">USD - US Dollar</div>
+                    </div>
+                </div>
+                <a href="help.html" class="nav-link">Bantuan</a>
+                <a href="history.html" class="nav-link active">Cek Order</a>
+                <div class="dropdown">
+                    <button type="button" class="btn-icon" onclick="toggleDropdown('notif-dropdown')">
+                        <i class="fa-regular fa-bell"></i>
+                        <span class="badge">2</span>
+                    </button>
+                    <div class="dropdown-menu notif-menu" id="notif-dropdown">
+                        <div class="notif-header">
+                            <span>Notifikasi</span>
+                            <a href="#">Tandai sudah dibaca</a>
+                        </div>
+                        <div class="notif-list">
+                            <div class="notif-item unread">
+                                <div class="notif-icon"><i class="fa-solid fa-check"></i></div>
+                                <div class="notif-content">
+                                    <h4>Pembayaran Berhasil</h4>
+                                    <p>Pesanan tiket pesawat tujuan Bali telah lunas.</p>
+                                    <span class="notif-time">Baru saja</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <a href="profile.html" style="text-decoration: none;">
+                    <div class="avatar" title="Akun Saya">JD</div>
+                </a>
+            </div>
+        </nav>
+    </header>
+
+    <main class="container">
+        <div class="history-layout">
+            
+            <!-- SIDEBAR NAVIGATION -->
+            <div class="history-sidebar">
+                <div class="history-nav">
+                    <h3>Pengaturan Akun</h3>
+                    <a href="profile.html" class="history-nav-item">
+                        <i class="fa-regular fa-user"></i> Data Pribadi
+                    </a>
+                    <a href="history.html" class="history-nav-item active">
+                        <i class="fa-solid fa-receipt"></i> Riwayat Pesanan
+                    </a>
+                    <a href="cards.html" class="history-nav-item">
+                        <i class="fa-regular fa-credit-card"></i> Kartu Saya
+                    </a>
+                    <a href="javascript:logout()" class="history-nav-item" style="color: var(--danger-red); margin-top: 24px;">
+                        <i class="fa-solid fa-arrow-right-from-bracket"></i> Keluar
+                    </a>
+                </div>
+            </div>
+
+            <!-- MAIN CONTENT -->
+            <div class="history-main">
+                <div class="history-header">
+                    <h2>Riwayat Pesanan</h2>
+                </div>
+
+                <!-- TABS -->
+                <div class="history-tabs">
+                    <div class="history-tab active">Semua Pesanan</div>
+                    <div class="history-tab">Aktif</div>
+                    <div class="history-tab">Selesai</div>
+                </div>
+
+                <!-- Cards will be injected here by history.js -->
+
+            </div>
+
+        </div>
+    </main>
+
+    <!-- FOOTER SECTION -->
+    <footer class="site-footer">
+        <div class="container">
+            <p>&copy; 2024 Navigo. Hak cipta dilindungi.</p>
+        </div>
+    </footer>
+
+    
+    <script src="../assets/js/main.js"></script>
+    <script src="../assets/js/history.js"></script>
+</body>
+</html>
