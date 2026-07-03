@@ -1,0 +1,176 @@
+/* assets/css/payment.css */
+
+.timer-banner {
+    background-color: #FFF3E0;
+    padding: 12px 0;
+    text-align: center;
+    border-bottom: 1px solid #FFE082;
+    position: sticky;
+    top: 61px; /* Tepat di bawah navbar checkout */
+    z-index: 99;
+    box-shadow: var(--shadow-sm);
+}
+
+.timer-content {
+    font-size: 15px;
+    font-weight: 500;
+    color: #E65100;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+}
+
+#countdown-timer {
+    font-size: 18px;
+    font-weight: 700;
+    font-variant-numeric: tabular-nums;
+    background-color: #E65100;
+    color: white;
+    padding: 4px 8px;
+    border-radius: 6px;
+    letter-spacing: 1px;
+}
+
+/* Accordion for Payment Methods */
+.payment-methods {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.accordion-item {
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    overflow: hidden;
+    background-color: var(--white);
+    transition: box-shadow 0.2s;
+}
+
+.accordion-item:hover {
+    box-shadow: var(--shadow-sm);
+}
+
+.accordion-header {
+    width: 100%;
+    text-align: left;
+    padding: 16px 20px;
+    background: none;
+    border: none;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--text-dark);
+    transition: background-color 0.2s;
+}
+
+.accordion-header:hover {
+    background-color: var(--bg-gray);
+}
+
+.accordion-header-left {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.accordion-header-left i.icon-type {
+    color: var(--primary-blue);
+    font-size: 18px;
+    width: 24px;
+    text-align: center;
+}
+
+.accordion-header i.fa-chevron-down {
+    transition: transform 0.3s ease;
+    color: var(--text-light);
+}
+
+.accordion-item.active .accordion-header i.fa-chevron-down {
+    transform: rotate(180deg);
+}
+
+.accordion-body {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s ease;
+    background-color: var(--bg-gray);
+}
+
+.accordion-item.active .accordion-body {
+    max-height: 600px; /* Cukup besar menampung opsi */
+    border-top: 1px solid var(--border-color);
+}
+
+.payment-options {
+    padding: 16px 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.radio-label {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 16px;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    cursor: pointer;
+    background-color: var(--white);
+    transition: all 0.2s;
+}
+
+.radio-label:hover {
+    border-color: var(--primary-blue);
+}
+
+/* Radio button diklik */
+input[type="radio"]:checked + .radio-content {
+    /* Style untuk menandakan terpilih, walaupun kita atur dari JS lebih baik */
+}
+
+.radio-left {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.radio-left input[type="radio"] {
+    width: 18px;
+    height: 18px;
+    cursor: pointer;
+    accent-color: var(--primary-blue);
+}
+
+.bank-logo {
+    height: 24px;
+    width: 50px;
+    object-fit: contain;
+    background-color: var(--white);
+}
+
+.bank-name {
+    font-weight: 600;
+    color: var(--text-dark);
+    font-size: 14px;
+}
+
+/* Order Summary specific */
+.order-id {
+    font-size: 14px;
+    color: var(--text-gray);
+    margin-bottom: 24px;
+    padding-bottom: 16px;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.order-id span {
+    font-weight: 700;
+    color: var(--text-dark);
+    font-family: monospace;
+    font-size: 16px;
+}
