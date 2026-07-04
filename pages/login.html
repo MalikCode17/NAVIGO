@@ -33,7 +33,7 @@
 
         <!-- BAGIAN KANAN: FORM LOGIN -->
         <div class="auth-form-container">
-            <a href="../index.html" class="btn-back"><i class="fa-solid fa-arrow-left"></i> Kembali ke Beranda</a>
+            
             
             <div class="auth-header">
                 <h2>Selamat Datang Kembali</h2>
@@ -93,6 +93,9 @@
 
     </main>
 
+    <script src="../assets/js/storage.js"></script>
+    <script src="../assets/js/utilities.js"></script>
+    <script src="../assets/js/navbar.js"></script>
     <script src="../assets/js/main.js"></script>
     <script>
         // Fitur Show/Hide Password
@@ -111,10 +114,13 @@
             }
         });
 
-        // Set login status
-        document.querySelector('form').addEventListener('submit', function(e) {
-            localStorage.setItem('navigo_logged_in', 'true');
-        });
+        
     </script>
 </body>
 </html>
+
+
+
+
+
+

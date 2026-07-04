@@ -55,7 +55,7 @@
                     <div class="dropdown-menu notif-menu" id="notif-dropdown">
                         <div class="notif-header">
                             <span>Notifikasi</span>
-                            <a href="#">Tandai sudah dibaca</a>
+                            <a href="#" onclick="markAllRead()">Tandai sudah dibaca</a>
                         </div>
                         <div class="notif-list">
                             <div class="notif-item unread">
@@ -111,12 +111,13 @@
                     <div class="avatar-upload">
                         <div class="avatar-preview">JD</div>
                         <div class="avatar-actions">
-                            <button type="button" class="btn-upload">Unggah Foto Baru</button>
+                            <input type="file" id="upload-photo" accept="image/png, image/jpeg" style="display:none;">
+                            <button type="button" class="btn-upload" onclick="document.getElementById('upload-photo').click()">Unggah Foto Baru</button>
                             <span class="avatar-hint">Format JPEG/PNG, max 2MB.</span>
                         </div>
                     </div>
 
-                    <form class="profile-form">
+                                        <form class="profile-form">
                         <div class="form-row">
                             <div class="form-group">
                                 <label>Nama Depan</label>
@@ -143,6 +144,7 @@
                             <label>Alamat Lengkap</label>
                             <input type="text" placeholder="Masukkan alamat lengkap Anda">
                         </div>
+
 
                         <button type="button" class="btn-save" id="btn-save-profile">Simpan Perubahan</button>
                     </form>
@@ -186,6 +188,14 @@
     </footer>
 
     
+    <script src="../assets/js/storage.js"></script>
+    <script src="../assets/js/utilities.js"></script>
+    <script src="../assets/js/navbar.js"></script>
     <script src="../assets/js/main.js"></script>
 </body>
 </html>
+
+
+
+
+
