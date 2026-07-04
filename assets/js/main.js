@@ -26,10 +26,7 @@ const PRODUCT_CATALOG = {
 };
 
 document.addEventListener('DOMContentLoaded', function() {
-    checkAuth();
     renderNotifications();
-    setupAuthSync();
-    setupFilter();
 });
 
 // 1. Dropdown Logic
@@ -55,37 +52,6 @@ document.addEventListener('click', function(e) {
 // Tambahkan toggleDropdown ke window object agar bisa dipanggil inline dari HTML
 window.toggleDropdown = toggleDropdown;
 
-// 2. Auth Check Logic
-function checkAuth() {
-    // Halaman yang dikecualikan dari perlindungan login
-    const path = window.location.pathname;
-    if (path.includes('login.html') || path.includes('register.html')) {
-        return; 
-    }
-
-    // Jika belum login, tendang ke login.html
-    const isLoggedIn = localStorage.getItem('navigo_logged_in');
-    if (isLoggedIn !== 'true') {
-        // Cek depth file untuk mengarahkan path dengan benar
-        if (path.includes('/pages/')) {
-            window.location.href = 'login.html';
-        } else {
-            window.location.href = 'pages/login.html';
-        }
-    }
-}
-
-// 3. Logout Logic
-function logout() {
-    localStorage.removeItem('navigo_logged_in');
-    const path = window.location.pathname;
-    if (path.includes('/pages/')) {
-        window.location.href = 'login.html';
-    } else {
-        window.location.href = 'pages/login.html';
-    }
-}
-window.logout = logout;
 
 // 4. Dynamic Notifications
 function renderNotifications() {
@@ -164,8 +130,6 @@ window.addNotification = function(title, desc, type) {
     });
     localStorage.setItem('navigo_notifs', JSON.stringify(notifs));
     renderNotifications();
-    setupAuthSync();
-    setupFilter();
 };
 
 window.markAllRead = function() {
@@ -173,8 +137,6 @@ window.markAllRead = function() {
     notifs = notifs.map(n => { n.read = true; return n; });
     localStorage.setItem('navigo_notifs', JSON.stringify(notifs));
     renderNotifications();
-    setupAuthSync();
-    setupFilter();
 };
 
 
@@ -244,140 +206,6 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 
-// 6. Auth Interceptors & Sync
-function setupAuthSync() {
-    const path = window.location.pathname;
-
-    // --- A. REGISTER PAGE ---
-    if (path.includes('register.html')) {
-        const regForm = document.querySelector('form');
-        if (regForm) {
-            regForm.addEventListener('submit', function(e) {
-                e.preventDefault();
-                const fName = document.getElementById('first-name').value;
-                const lName = document.getElementById('last-name').value;
-                const email = document.getElementById('email').value;
-                const phone = document.getElementById('phone').value;
-                
-                const profileData = {
-                    firstName: fName,
-                    lastName: lName,
-                    email: email,
-                    phone: phone
-                };
-                localStorage.setItem('navigo_user_profile', JSON.stringify(profileData));
-                localStorage.setItem('navigo_logged_in', 'true');
-                window.location.href = '../index.html';
-            });
-        }
-    }
-
-    // --- B. LOGIN PAGE ---
-    if (path.includes('login.html')) {
-        const loginForm = document.querySelector('form');
-        if (loginForm) {
-            loginForm.addEventListener('submit', function(e) {
-                e.preventDefault();
-                const email = document.getElementById('email').value;
-                
-                // Cek apakah ada profil
-                let profileData = JSON.parse(localStorage.getItem('navigo_user_profile'));
-                if (!profileData) {
-                    // Buat profil dummy jika belum ada
-                    profileData = {
-                        firstName: "User",
-                        lastName: "Baru",
-                        email: email,
-                        phone: "081234567890"
-                    };
-                    localStorage.setItem('navigo_user_profile', JSON.stringify(profileData));
-                }
-                
-                localStorage.setItem('navigo_logged_in', 'true');
-                window.location.href = '../index.html';
-            });
-        }
-    }
-
-    // --- C. PROFILE PAGE ---
-    if (path.includes('profile.html') || path.includes('cards.html')) {
-        let profileData = JSON.parse(localStorage.getItem('navigo_user_profile'));
-        if (profileData) {
-            const elFirst = document.getElementById('profile-first-name');
-            const elLast = document.getElementById('profile-last-name');
-            const elEmail = document.getElementById('profile-email');
-            const elPhone = document.getElementById('profile-phone');
-            
-            if(elFirst) elFirst.value = profileData.firstName;
-            if(elLast) elLast.value = profileData.lastName;
-            if(elEmail) elEmail.value = profileData.email;
-            if(elPhone) elPhone.value = profileData.phone;
-
-            
-            // Update avatar name
-            const avatar = document.querySelector('.avatar-preview');
-            if (avatar && profileData.firstName) {
-                avatar.textContent = profileData.firstName.charAt(0) + (profileData.lastName ? profileData.lastName.charAt(0) : '');
-            }
-
-            // Update card holder name if exists
-            const cardHolder = document.getElementById('card-holder-name');
-            if (cardHolder && profileData.firstName) {
-                cardHolder.textContent = (profileData.firstName + ' ' + (profileData.lastName || '')).toUpperCase();
-            }
-
-        }
-
-        const btnSave = document.getElementById('btn-save-profile');
-        if (btnSave) {
-            btnSave.addEventListener('click', function() {
-                const elFirst = document.getElementById('profile-first-name');
-                const elLast = document.getElementById('profile-last-name');
-                const elEmail = document.getElementById('profile-email');
-                const elPhone = document.getElementById('profile-phone');
-                
-                let newProfile = {
-                    firstName: elFirst ? elFirst.value : '',
-                    lastName: elLast ? elLast.value : '',
-                    email: elEmail ? elEmail.value : '',
-                    phone: elPhone ? elPhone.value : ''
-                };
-                
-                localStorage.setItem('navigo_user_profile', JSON.stringify(newProfile));
-                alert('Data berhasil disimpan!');
-            });
-        }
-    }
-
-    // --- D. CHECKOUT AUTOFILL ---
-    if (path.includes('checkout')) {
-        let profileData = JSON.parse(localStorage.getItem('navigo_user_profile'));
-        if (profileData) {
-            const contactName = document.getElementById('contact-name');
-            const contactEmail = document.getElementById('contact-email');
-            const contactPhone = document.getElementById('contact-phone');
-            
-            if (contactName) contactName.value = profileData.firstName + ' ' + profileData.lastName;
-            if (contactEmail) contactEmail.value = profileData.email;
-            if (contactPhone) contactPhone.value = profileData.phone;
-        }
-
-        // Fitur "Sama dengan pemesan"
-        const checkboxSame = document.getElementById('same-as-contact');
-        if (checkboxSame) {
-            checkboxSame.addEventListener('change', function() {
-                const passName = document.getElementById('passenger-name') || document.getElementById('guest-name');
-                const contactName = document.getElementById('contact-name');
-                
-                if (this.checked && passName && contactName) {
-                    passName.value = contactName.value;
-                } else if (!this.checked && passName) {
-                    passName.value = '';
-                }
-            });
-        }
-    }
-}
 
 
 // 7. Quick Menu Modal System
@@ -515,58 +343,3 @@ document.addEventListener('click', function(e) {
 window.openQmModal = openQmModal;
 window.closeQmModal = closeQmModal;
 
-
-// 8. Search Filter Logic
-function setupFilter() {
-    const filterCheckboxes = document.querySelectorAll('.filter-airline input[type="checkbox"]');
-    const flightCards = document.querySelectorAll('article.flight-card');
-    const resetBtn = document.querySelector('.btn-reset');
-    const flightCountText = document.querySelector('.flight-count');
-
-    if (filterCheckboxes.length === 0 || flightCards.length === 0) return;
-
-    function applyFilters() {
-        // Cari checkbox apa saja yang dicentang
-        const checkedAirlines = Array.from(filterCheckboxes)
-            .filter(cb => cb.checked)
-            .map(cb => cb.value);
-
-        let visibleCount = 0;
-
-        flightCards.forEach(card => {
-            const airline = card.getAttribute('data-airline');
-            
-            // Tampilkan jika tidak ada yang dicentang, ATAU jika airline-nya termasuk yang dicentang
-            if (checkedAirlines.length === 0 || checkedAirlines.includes(airline)) {
-                card.style.display = 'flex'; // menggunakan flex karena flight-card aslinya display:flex
-                card.style.animation = 'fadeIn 0.5s ease forwards';
-                visibleCount++;
-            } else {
-                card.style.display = 'none';
-            }
-        });
-
-        // Update teks jumlah penerbangan
-        if (flightCountText) {
-            flightCountText.textContent = `Menampilkan ${visibleCount} penerbangan terbaik`;
-        }
-    }
-
-    // Attach event listeners to checkboxes
-    filterCheckboxes.forEach(cb => {
-        cb.addEventListener('change', applyFilters);
-    });
-
-    // Reset button logic
-    if (resetBtn) {
-        resetBtn.addEventListener('click', () => {
-            filterCheckboxes.forEach(cb => {
-                cb.checked = true; // aslinya dicentang semua
-            });
-            applyFilters();
-        });
-    }
-
-    // Initial apply
-    applyFilters();
-}
