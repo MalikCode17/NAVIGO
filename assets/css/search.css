@@ -5,16 +5,20 @@
    ========================================== */
 
 .search-section {
-    margin-top: -50px; /* Overlap ke dalam Hero Banner */
+    margin-top: -50px;
+    /* Overlap ke dalam Hero Banner */
     position: relative;
-    z-index: 10; /* Berada di atas hero banner */
+    z-index: 10;
+    /* Berada di atas hero banner */
 }
 
 .search-box {
     background-color: var(--white, #FFFFFF);
     border-radius: 24px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08); /* Efek bayangan premium */
-    padding: 32px 40px; /* Diperlebar */
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+    /* Efek bayangan premium */
+    padding: 32px 40px;
+    /* Diperlebar */
     margin: 0 auto;
 }
 
@@ -22,7 +26,10 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    gap: 24px; /* Diperlebar */
+    gap: 24px;
+    /* Diperlebar */
+    flex-wrap: wrap;
+    /* Mencegah overflow */
 }
 
 /* Mengelompokkan input */
@@ -34,7 +41,8 @@
 }
 
 .location-group {
-    flex: 1.5; /* Porsi lebar lebih besar untuk lokasi */
+    flex: 1.5;
+    /* Porsi lebar lebih besar untuk lokasi */
 }
 
 /* Item per input (Dari, Ke, Berangkat) */
@@ -98,7 +106,7 @@
     justify-content: center;
     transition: all 0.3s ease;
     flex-shrink: 0;
-    box-shadow: var(--shadow-sm, 0 1px 2px rgba(0,0,0,0.05));
+    box-shadow: var(--shadow-sm, 0 1px 2px rgba(0, 0, 0, 0.05));
 }
 
 .swap-btn:hover {
@@ -136,21 +144,21 @@
     .search-fields {
         flex-wrap: wrap;
     }
-    
+
     .vertical-divider {
         display: none;
     }
-    
+
     .field-group {
         width: 100%;
         flex: none;
     }
-    
+
     .search-btn-wrapper {
         width: 100%;
         margin-top: 16px;
     }
-    
+
     .btn-search {
         width: 100%;
     }
